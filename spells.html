@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#102F1C" />
+    <meta name="description" content="Spell library for Dream Dungeon." />
+    <title>Dream Dungeon — Spell Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="atmosphere"></div>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Dream Dungeon home"><span class="brand-mark" aria-hidden="true">D</span><span><strong>Dream Dungeon</strong><small>Design Bible</small></span></a>
+      <nav class="header-nav" aria-label="Primary navigation"><a href="index.html#design-bible">Bible</a><a href="#spell-library">Spells</a><a href="index.html#reference">Reference</a></nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Menu</button>
+    </header>
+
+    <main id="top" class="shell">
+      <aside id="sidebar" class="sidebar" aria-label="Spell library navigation">
+        <div class="sidebar-heading"><span>Spell library</span><span class="version">v0.1</span></div>
+        <nav class="chapter-nav"><a class="part-link" href="#black">Black</a><a class="part-link" href="#blue">Blue</a><a class="part-link" href="#green">Green</a><a class="part-link" href="#red">Red</a><a class="part-link" href="#white">White</a><a class="part-link" href="#neutral">Neutral</a><a class="part-link" href="#source">Source sheet</a></nav>
+        <p class="sidebar-note">Curated starting entries from the working spell ideas sheet. Values marked <em>x</em> remain design placeholders.</p>
+      </aside>
+
+      <div id="content" class="content">
+        <section id="spell-library" class="spell-page-hero">
+          <p class="eyebrow">Player systems · Chapter 6</p>
+          <h1>Spell<br /><em>Library</em></h1>
+          <p>Spells should be individually clear and immediately useful. The deep decisions happen when a party combines them with conditions, talents, items, positioning, and one another.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#black">Browse schools <span aria-hidden="true">↓</span></a><a class="button button-secondary" href="index.html#player-systems">Return to Bible</a></div>
+        </section>
+
+        <section id="black" class="school-section school-black"><div class="school-heading"><div><p class="eyebrow">Color school</p><h2>Black</h2></div><p>Momentum, conditions, sacrifice, and opportunistic pressure.</p></div><div class="spell-grid">
+          <article class="spell-card"><span class="spell-color">Black · Instant</span><h3>Backstab</h3><p class="spell-effect">Deal weapon damage plus x. Damage increases from behind; build momentum and weaken the target on a rear attack.</p><p class="spell-meta"><span>Range: Melee</span><span>Requires: Melee weapon</span></p></article>
+          <article class="spell-card"><span class="spell-color">Black · Instant</span><h3>Black Mist</h3><p class="spell-effect">Dissolve into mist and become untargetable. Units within the mist are repeatedly struck based on consumed momentum.</p><p class="spell-meta"><span>Range: Self</span></p></article>
+          <article class="spell-card"><span class="spell-color">Black · Instant</span><h3>Blessing of End</h3><p class="spell-effect">All allies gain increased damage against units affected by at least one condition.</p><p class="spell-meta"><span>Range: Global</span></p></article>
+          <article class="spell-card"><span class="spell-color">Black · Instant</span><h3>Bloodletting</h3><p class="spell-effect">For x seconds, take 20% increased damage but gain x% mana for every point of damage received.</p><p class="spell-meta"><span>Range: Self</span></p></article>
+        </div></section>
+
+        <section id="blue" class="school-section school-blue"><div class="school-heading"><div><p class="eyebrow">Color school</p><h2>Blue</h2></div><p>Arcane pressure and weakened-target interactions.</p></div><div class="spell-grid">
+          <article class="spell-card"><span class="spell-color">Blue · Cast</span><h3>Arcane Ball</h3><p class="spell-effect">Conjure a slow-moving ball of energy that damages enemy units in its path every 0.5 seconds.</p><p class="spell-meta"><span>Range: Ranged</span></p></article>
+          <article class="spell-card"><span class="spell-color">Blue · Cast</span><h3>Arcane Barrage</h3><p class="spell-effect">Fire many arcane missiles at a target. Also hits weakened targets around that enemy and can be channeled while moving.</p><p class="spell-meta"><span>Range: Ranged</span></p></article>
+          <article class="spell-card"><span class="spell-color">Blue · Instant</span><h3>Arcane Blast</h3><p class="spell-effect">Deal x magic damage around the caster and weaken affected targets.</p><p class="spell-meta"><span>Range: Ranged</span></p></article>
+          <article class="spell-card"><span class="spell-color">Blue · Instant</span><h3>Arcane Bolt</h3><p class="spell-effect">Shoot an arcane projectile at the target and weaken it.</p><p class="spell-meta"><span>Range: Ranged</span></p></article>
+        </div></section>
+
+        <section id="green" class="school-section school-green"><div class="school-heading"><div><p class="eyebrow">Color school</p><h2>Green</h2></div><p>Adaptable combat aspects, movement, and party proximity.</p></div><div class="spell-grid">
+          <article class="spell-card"><span class="spell-color">Green · Instant</span><h3>Aspect of the Beast</h3><p class="spell-effect">Increase physical damage and movement speed, while reducing armor and mana regeneration.</p><p class="spell-meta"><span>Range: Self</span></p></article>
+          <article class="spell-card"><span class="spell-color">Green · Instant</span><h3>Aspect of the Hunter</h3><p class="spell-effect">Increase ranged-weapon reach and damage, while reducing melee and magical damage.</p><p class="spell-meta"><span>Range: Self</span></p></article>
+          <article class="spell-card"><span class="spell-color">Green · Instant</span><h3>Aspect of the Owl</h3><p class="spell-effect">Increase healing power and mana regeneration, while reducing magical and physical damage.</p><p class="spell-meta"><span>Range: Self</span></p></article>
+          <article class="spell-card"><span class="spell-color">Green · Instant</span><h3>Aspect of the Pack</h3><p class="spell-effect">Increase nearby allies’ movement speed and grant armor while they stay close.</p><p class="spell-meta"><span>Range: Self</span></p></article>
+        </div></section>
+
+        <section id="red" class="school-section school-red"><div class="school-heading"><div><p class="eyebrow">Color school</p><h2>Red</h2></div><p>Physical aggression, momentum, risk, and battlefield initiation.</p></div><div class="spell-grid">
+          <article class="spell-card"><span class="spell-color">Red · Instant</span><h3>Battle Shout</h3><p class="spell-effect">Increase allied physical damage and reduce nearby enemies’ physical damage. The effect strengthens with more allies in range.</p><p class="spell-meta"><span>Range: Self</span></p></article>
+          <article class="spell-card"><span class="spell-color">Red · Instant</span><h3>Berserk</h3><p class="spell-effect">Enter a frenzy that increases attack speed for x seconds. Costs a percentage of current health and ends if the target changes.</p><p class="spell-meta"><span>Range: Self</span></p></article>
+          <article class="spell-card"><span class="spell-color">Red · Instant</span><h3>Blessing of Rage</h3><p class="spell-effect">All allies gain increased damage based on their momentum.</p><p class="spell-meta"><span>Range: Global</span></p></article>
+          <article class="spell-card"><span class="spell-color">Red · Instant</span><h3>Charge</h3><p class="spell-effect">Charge an enemy, leave a burning trail, briefly stun the target, and build momentum.</p><p class="spell-meta"><span>Range: Ranged</span></p></article>
+        </div></section>
+
+        <section id="white" class="school-section school-white"><div class="school-heading"><div><p class="eyebrow">Color school</p><h2>White</h2></div><p>Protection, healing, connections, and protective battlefield control.</p></div><div class="spell-grid">
+          <article class="spell-card"><span class="spell-color">White · Cast</span><h3>Barricades</h3><p class="spell-effect">Create a straight barricade that enemies cannot pass. Enemies near it take x damage each second.</p><p class="spell-meta"><span>Range: Ranged</span></p></article>
+          <article class="spell-card"><span class="spell-color">White · Instant</span><h3>Bind</h3><p class="spell-effect">Bind two friendly or enemy units: damage and healing received by one is also received by the other until separated.</p><p class="spell-meta"><span>Range: Ranged</span></p></article>
+          <article class="spell-card"><span class="spell-color">White · Instant</span><h3>Blast of Light</h3><p class="spell-effect">Heal all nearby allies for x.</p><p class="spell-meta"><span>Range: Self</span></p></article>
+          <article class="spell-card"><span class="spell-color">White · Instant</span><h3>Blessing of Mercy</h3><p class="spell-effect">All allies gain increased armor and health.</p><p class="spell-meta"><span>Range: Global</span></p></article>
+        </div></section>
+
+        <section id="neutral" class="school-section school-neutral"><div class="school-heading"><div><p class="eyebrow">Core kit</p><h2>Neutral</h2></div><p>Tools that support a wide range of builds.</p></div><div class="spell-grid">
+          <article class="spell-card"><span class="spell-color">Neutral · Cast</span><h3>Arcane Missile</h3><p class="spell-effect">Fire a single arcane missile at the target for x magic damage and gain momentum.</p><p class="spell-meta"><span>Range: Ranged</span></p></article>
+          <article class="spell-card"><span class="spell-color">Neutral · Instant</span><h3>Bash</h3><p class="spell-effect">Interrupt target spellcasting, deal low damage, and generate high threat.</p><p class="spell-meta"><span>Range: Melee</span><span>Requires: Melee weapon</span></p></article>
+          <article class="spell-card"><span class="spell-color">Neutral · Instant</span><h3>Heavy Strike</h3><p class="spell-effect">Increase the damage of the next auto attack by x and gain momentum.</p><p class="spell-meta"><span>Range: Melee</span><span>Requires: Melee weapon</span></p></article>
+          <article class="spell-card"><span class="spell-color">Neutral · Cast</span><h3>Lesser Heal</h3><p class="spell-effect">Heal a target ally for x health.</p><p class="spell-meta"><span>Range: Ranged</span></p></article>
+        </div></section>
+
+        <section id="source" class="wiki-section spell-source"><p class="eyebrow">Editable source</p><h2>Continue the library</h2><p>The full working sheet contains 154 spell concepts. Use it to add the next reviewed entries to this page as their descriptions and values become clearer.</p><a class="button button-primary" href="Spell_Ideas_Latest%20-%20Spells.csv">Open the spell ideas CSV</a></section>
+      </div>
+    </main>
+    <footer class="site-footer"><span>Dream Dungeon Spell Library</span><span>A hand-authored reference built from the working spell sheet.</span></footer>
+    <script src="app.js" defer></script>
+  </body>
+</html>
