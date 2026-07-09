@@ -126,6 +126,12 @@ button, input { font: inherit; }
 .spell-tools input { flex: 1; min-width: 10rem; padding: .35rem .45rem; border: 1px solid var(--border); background: var(--surface); color: var(--ink); }
 .record-count { margin: 0; color: var(--muted); font-size: .8rem; }
 .spell-source { margin-top: 2rem; padding: 1rem; border: 1px solid var(--border); background: var(--surface-alt); }
+.spell-index-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+.spell-list-section { border: 1px solid var(--border); background: var(--surface); }
+.spell-list-section h3 { margin: 0; padding: .5rem .65rem; background: var(--surface-alt); border-bottom: 1px solid var(--border); font: bold 1rem Georgia, serif; }
+.spell-list-section h3 small { color: var(--muted); font: normal .75rem Arial, sans-serif; }
+.spell-list { margin: 0; padding: .5rem .65rem .65rem 1.75rem; columns: 2; font-size: .82rem; }
+.spell-list li { break-inside: avoid; margin: .15rem 0; }
 
 .reference-content { display: grid; gap: 1.5rem; }
 .reference-panel { padding: .75rem; border: 1px solid var(--border); background: var(--surface); }
