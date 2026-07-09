@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#102F1C" />
+    <meta name="description" content="The living design reference for Dream Dungeon." />
+    <title>Dream Dungeon — Design Bible</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="atmosphere"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Dream Dungeon home">
+        <span class="brand-mark" aria-hidden="true">D</span>
+        <span><strong>Dream Dungeon</strong><small>Design Bible</small></span>
+      </a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="#design-bible">Bible</a>
+        <a href="#spells">Spells</a>
+        <a href="#reference">Reference</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Menu</button>
+    </header>
+
+    <main id="top" class="shell">
+      <aside id="sidebar" class="sidebar" aria-label="Design bible navigation">
+        <div class="sidebar-heading"><span>Contents</span><span class="version">v0.1</span></div>
+        <nav class="chapter-nav">
+          <a class="part-link" href="#foundation">I · Foundation</a>
+          <a href="#vision">Chapter 1 · Vision &amp; Philosophy</a>
+          <a class="part-link" href="#gameplay">II · Gameplay</a>
+          <a href="#loop">Ch. 2 · Core Loop</a><a href="#combat">Ch. 3 · Combat</a><a href="#progression">Ch. 4–5 · Progression &amp; Resources</a>
+          <a class="part-link" href="#player-systems">III · Player Systems</a>
+          <a href="#player-systems">Ch. 6–10 · Spells, Colors, Conditions, Talents, Items</a>
+          <a class="part-link" href="#world-systems">IV · World Systems</a>
+          <a href="#world-systems">Ch. 11–14 · Enemies, Encounters, Bosses, Levels</a>
+          <a class="part-link" href="#world">V · World</a>
+          <a href="#world">Ch. 15–18 · Setting, Lore, Gods, Story</a>
+          <a class="part-link" href="#development">VI · Development</a>
+          <a href="#development">Ch. 19–22 · MVP, Roadmap, Questions, Ideas</a>
+          <a class="part-link" href="#spells">Spell library</a>
+          <a class="part-link" href="#reference">Reference files</a>
+        </nav>
+        <p class="sidebar-note">A living reference. Mechanics marked Prototype are expected to evolve through playtesting.</p>
+      </aside>
+
+      <div id="content" class="content">
+        <section class="hero" aria-labelledby="hero-title">
+          <p class="eyebrow">A living design reference</p>
+          <h1 id="hero-title">Dream Dungeon<br /><em>Design Bible</em></h1>
+          <p class="hero-copy">A cooperative tactical action roguelike built around communication, meaningful builds, and dangerous shared adventures.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#design-bible">Read the bible <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="#spells">Browse spells</a>
+          </div>
+        </section>
+
+        <figure class="palette-reference">
+          <img src="colorPalet.png" alt="Everwild inspired palette reference showing the Dream Dungeon color system and nature-first visual mood." />
+          <figcaption><span>Visual direction</span> Everwild inspired palette — wonder, harmony, warmth, mystery, and adventure.</figcaption>
+        </figure>
+
+        <section class="principles" aria-label="Design principles">
+          <article><span>01</span><h2>Simple spells.<br />Deep builds.</h2><p>Depth emerges through combinations, talents, conditions, party composition, and player decisions.</p></article>
+          <article><span>02</span><h2>Simple enemies.<br />Deep encounters.</h2><p>Clear roles create a readable foundation for more demanding encounter composition and cooperation.</p></article>
+          <article><span>03</span><h2>Cooperation over<br />individual performance.</h2><p>Positioning, support, threat, and coordinated decisions are the path to a hard-won victory.</p></article>
+        </section>
+
+        <section id="design-bible" class="wiki-section" aria-labelledby="bible-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">The source of truth</p><h2 id="bible-title">Design Bible</h2></div>
+            <a class="button button-secondary" href="Dream_Dungeon_Philosophy_Design_Bible_v0.1.docx">Open original .docx</a>
+          </div>
+          <div class="bible-content">
+            <article id="foundation" class="wiki-entry">
+              <p class="entry-kicker">Part I · Foundation</p>
+              <h3 id="vision" class="document-chapter">Chapter 1 · Vision &amp; Philosophy</h3>
+              <p class="lead">Dream Dungeon is a cooperative tactical action roguelike where a party fights through escalating encounters and builds distinctive characters from drafted spells, items, and talents.</p>
+              <p>It is designed as a long, high-stakes adventure—potentially played over more than one session. The route is the goal: a lost run should sting because a character mattered, while still making the next shared build feel exciting.</p>
+              <div class="callout"><strong>Core fantasy</strong><span>Overcome dangerous encounters through teamwork, planning, and creative builds.</span></div>
+              <h4>Design principles</h4>
+              <ul><li><strong>Simple spells. Deep builds.</strong> Depth comes from combinations, conditions, talents, party composition, and decisions.</li><li><strong>Simple enemies. Deep encounters.</strong> Enemies have readable roles; encounter composition creates challenge.</li><li><strong>Readability above complexity.</strong> Feedback, animation, and silhouette should explain why something happened.</li><li><strong>Randomness creates variety, not frustration.</strong> Variation should create decisions rather than invalidate planning.</li></ul>
+            </article>
+
+            <article id="gameplay" class="wiki-entry">
+              <p class="entry-kicker">Part II · Gameplay</p>
+              <h3 id="loop" class="document-chapter">Chapter 2 · Core Gameplay Loop</h3>
+              <div class="loop-flow" aria-label="MVP gameplay loop"><span>Hub</span><b>→</b><span>Prepare</span><b>→</b><span>Ready check</span><b>→</b><span>Encounter</span><b>→</b><span>Loot &amp; shared XP</span><b>→</b><span>Draft / shop</span></div>
+              <p>The MVP removes exploration to test the core loop in a single arena with a preparation hub. Bosses arrive after encounters 5, 10, 15, and 20. Shared experience drives party level-ups and spell drafts, while gold, relics, items, and spells each support a distinct kind of growth.</p>
+              <h3 id="combat" class="document-chapter">Chapter 3 · Combat</h3>
+              <p>Combat should be responsive, chunky, direct, readable, reactive, and tactical. It favors clear telegraphs and satisfying feedback over spectacle or realism, with WASD movement, a hotbar, a global cooldown for most spells, automatic attacks, animation cancelling, and meaningful crowd control.</p>
+              <h3 id="progression" class="document-chapter">Chapters 4–5 · Progression &amp; Resources</h3>
+              <p>Spells define actions, items make those actions stronger, and talents create connections between systems. Health and mana form the universal base; threat enables tanking, momentum gives many offense builds an active rhythm, and weakened opens condition-based crowd-control opportunities.</p>
+            </article>
+
+            <article id="player-systems" class="wiki-entry">
+              <p class="entry-kicker">Part III · Player Systems</p>
+              <h3 class="document-chapter">Chapters 6–10 · The Build Toolbox</h3>
+              <div class="chapter-grid"><a href="#spells"><strong>6</strong><span>Spell Design</span></a><a href="#spells"><strong>7</strong><span>Colors</span></a><a href="#reference"><strong>8</strong><span>Conditions</span></a><a href="#reference"><strong>9</strong><span>Talents</span></a><a href="#reference"><strong>10</strong><span>Items</span></a></div>
+              <p>Players are not locked into classes. Spell drafting establishes the active toolkit, colors organize magical identity, conditions create interactions, talents produce synergies, and items provide power growth that can be traded for party success.</p>
+            </article>
+
+            <article id="world-systems" class="wiki-entry">
+              <p class="entry-kicker">Part IV · World Systems</p>
+              <h3 class="document-chapter">Chapters 11–14 · Pressure with Purpose</h3>
+              <p>Enemy, encounter, boss, and level design work together to make communication valuable. Individual enemies should be easy to read; encounter composition, objectives, positioning, and escalating boss mechanics deliver the deeper challenge.</p>
+              <div class="chapter-grid"><span><strong>11</strong><span>Enemy Design</span></span><span><strong>12</strong><span>Encounter Design</span></span><span><strong>13</strong><span>Boss Design</span></span><span><strong>14</strong><span>Level Design</span></span></div>
+            </article>
+
+            <article id="world" class="wiki-entry">
+              <p class="entry-kicker">Part V · World</p>
+              <h3 class="document-chapter">Chapters 15–18 · An Ancient Dungeon</h3>
+              <p>The Dungeon is an ancient, mysterious place shaped by the Five Old Gods before their defeat by the New God. Lore should be discovered through exploration, environmental storytelling, optional interactions, enemies, relics, and world details—not long interruptions to play.</p>
+              <p>Each god provides a thematic anchor for color schools, biomes, creatures, altars, relics, and talents. Their identities remain intentionally flexible in the MVP while gameplay earns its foundation.</p>
+            </article>
+
+            <article id="development" class="wiki-entry">
+              <p class="entry-kicker">Part VI · Development</p>
+              <h3 class="document-chapter">Chapters 19–22 · Prove the Core</h3>
+              <p>The MVP asks a single question: <strong>Is Dream Dungeon fun to play?</strong> It prioritizes responsive combat, group communication, meaningful spell drafting, and satisfying item growth before procedural generation, branching paths, advanced item systems, and complete story content.</p>
+              <div class="roadmap"><span><b>01</b> Core gameplay</span><span><b>02</b> Gameplay expansion</span><span><b>03</b> World expansion</span><span><b>04</b> Content &amp; polish</span></div>
+              <p>Open questions are a deliberate tool: answers should come from prototyping and playtesting, then graduate into the relevant chapter once validated.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="spells" class="wiki-section spell-section" aria-labelledby="spells-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">Spell reference</p><h2 id="spells-title">Spell Library</h2></div>
+            <a class="button button-secondary" href="Spell_Ideas_Latest%20-%20Spells.csv">Open spell .csv</a>
+          </div>
+          <p class="section-intro">A hand-picked starting set from the spell ideas sheet. The full, editable source contains 154 spell concepts across the project’s color schools.</p>
+          <div class="spell-grid">
+            <article class="spell-card" style="--spell-color:#302317"><span class="spell-color">Black</span><h3>Backstab</h3><p class="spell-effect">Deal weapon damage plus bonus damage. Hitting from behind increases damage, builds momentum, and weakens the target.</p><p class="spell-meta"><span>Range: Melee</span><span>Requires: Melee weapon</span><span>Cast: Instant</span></p></article>
+            <article class="spell-card" style="--spell-color:#302317"><span class="spell-color">Black</span><h3>Black Mist</h3><p class="spell-effect">Dissolve into mist, becoming untargetable. Units in the mist are attacked repeatedly based on consumed momentum.</p><p class="spell-meta"><span>Range: Self</span><span>Cast: Instant</span></p></article>
+            <article class="spell-card" style="--spell-color:#302317"><span class="spell-color">Black</span><h3>Blessing of End</h3><p class="spell-effect">All allies deal increased damage against units affected by at least one condition.</p><p class="spell-meta"><span>Range: Global</span><span>Cast: Instant</span></p></article>
+            <article class="spell-card" style="--spell-color:#302317"><span class="spell-color">Black</span><h3>Bloodletting</h3><p class="spell-effect">For a limited time, take increased damage but gain mana in response to damage received.</p><p class="spell-meta"><span>Range: Self</span><span>Cast: Instant</span></p></article>
+            <article class="spell-card" style="--spell-color:#7F4A2B"><span class="spell-color">Red</span><h3>Color School</h3><p class="spell-effect">Red concepts are collected in the full spell sheet. Use this card as a place to add the first curated entry.</p><p class="spell-meta"><span>Source: spell ideas sheet</span></p></article>
+            <article class="spell-card" style="--spell-color:#335A7B"><span class="spell-color">Blue</span><h3>Color School</h3><p class="spell-effect">Blue concepts are collected in the full spell sheet. Add the first curated entry here as the school takes shape.</p><p class="spell-meta"><span>Source: spell ideas sheet</span></p></article>
+          </div>
+        </section>
+
+        <section id="reference" class="wiki-section reference-section" aria-labelledby="reference-title">
+          <div class="section-heading"><div><p class="eyebrow">Supporting material</p><h2 id="reference-title">Reference</h2></div></div>
+          <div class="reference-content">
+            <article class="reference-panel"><h3>Working glossary</h3><p>Key terms from the project glossary; expand these definitions directly as systems solidify.</p><dl class="glossary-list"><div><dt>Conditions</dt><dd>Burning, Poisoned, Marked, Rooted, Immobilized, Weakened, Stunned, Bleeding, Silenced, and more create the interaction layer of combat.</dd></div><div><dt>Momentum</dt><dd>An active combat rhythm for many offensive builds, without becoming mandatory for every playstyle.</dd></div><div><dt>Threat</dt><dd>The system that directs enemy behavior and gives tank-oriented builds a meaningful party role.</dd></div><div><dt>Relics</dt><dd>Rare boss rewards intended for future altar-based talent acquisition.</dd></div></dl></article>
+            <article class="reference-panel"><h3>Project source files</h3><p>Keep these files as the editable, detailed source; this site is the readable starting layer.</p><div class="source-links"><a href="Spell_Ideas_Latest%20-%20Spells.csv">Spell ideas · CSV</a><a href="Spell_Ideas_Latest-Glossary.xlsx">Glossary &amp; build ideas · XLSX</a><a href="Dream_Dungeon_Philosophy_Design_Bible_v0.1.docx">Design Bible · DOCX</a></div></article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer"><span>Dream Dungeon Design Bible</span><span>Built from the project’s living source documents.</span></footer>
+    <script src="app.js" defer></script>
+  </body>
+</html>

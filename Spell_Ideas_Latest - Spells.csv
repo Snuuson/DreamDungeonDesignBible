@@ -1,0 +1,155 @@
+Name,Color,Effect,Cost,Cooldown,Range,Requirements,Cast
+Backstab,black,Deal weapon damage + x to the target. Damage is increased when attacking from behind. Increase momentum. Weaken target when attacking from behind,,,Melee,Melee Weapon,Instant
+Black Mist,black,Dissolve into black mist making your untargetable for x Seconds. All target in the mist are attacked by your main hand attack once and afterwards every second for every momentum you have consuming the stacks. Allies in the mist cant be targeted by emey units,,,Self,,Instant
+Blessing of end,black,All allies gain increased damage against units affected by at least one condition,,,Global,,Instant
+Bloodletting,black,For x seconds you take 20% increased damage but for every point of damage you take you gain x% mana,,,Self,,Instant
+Curse of blood,black,Target unit takes damage over time (also allies) and get weakened every x seconds but they gain momentum every x seconds for x seconds and deal +x% damage,,,Ranged,,Instant
+Curse of pain,black,Target enemy takes damage over time,,,Ranged,,Instant
+Curse of the dead,black,"Place a curse on the target enemy , if it dies within its duration it will explode dealing aoe damage and then come back to fight alongside the caster for a short period of time",,,Ranged,,Instant
+Curse of vulnerability,black,Curse the target so that its magical resistance is lowered. High threat.,,,Ranged,,Instant
+Desecrate,black,"Create desecrated ground abvove your feet, dealing damage to all units (including allies), and increase allies and minions attack speed while weakening enemy units",,,Melee,,Instant
+Deteriorate,black,Target unit has its physical and magical mitigation reduced for x seconds. Consumes Momentum for longer duration,,,Ranged,,Cast
+Drain Essence,black,"Channel to drain mana and life from target enemy and restore your respective pools, or give some of your mana and health to an ally player",,,Ranged,,Cast
+Ends Grip,black,"Grip a unit with dark magic into the air, making it unable to take action (stun) and dealing damage per second. Use momentum to increase duration.",,,Ranged,,Instant
+Finish,black,Deal X amount of damage as physical and magical damage (50:50%) . Use momentum to increase damage.,,,Melee,Melee Weapon,Instant
+Leeching Attacks,black,For the next 10 seconds your auto attacks replenish health equal to the damage you deal,,,Self,,Instant
+Leeching Strike,black,Deal x physical damage to the target. For each weakened stack the target has heal for x% of max health.,,,Melee,Melee Weapon,Instant
+Necrotic Strike,black,"Strike target enemy for weapon damage + X and decrease the healing in receives by 10%, stacks up to 5 times. Increases momentum",,,Melee,Melee Weapon,Instant
+Plague ward,black,summon a static plague ward that attacks nearby enemies and applies a curse of the plague for 5 seconds. If the unit dies within these 5 seconds a new plague ward is spawned.,,,Ranged,,Instant
+Raise Dead,black,Channel dark magic raising one fallen enemy every 1 second for X seconds (depending on momentum) fighting for you for a short amount of time,,,Self,,Cast
+Reapers Scythe,black,"Tries to execute an enemy unit below 25% health. 10% chance to instantly kill, increased by momentum. If enemy unit dies, reset cooldown, otherwise deal some damage and trigger cooldown",,,Melee,Melee Weapon,Instant
+Sacrifice,black,Sacrifice target allied unit making it explode to deal damage around it and gaining mana and healt equal to % percent of its current life and mana.,,,Ranged,,Instant
+Shade of Fear,black,Leave your body behind stunned and jump into the shadow realm. You become invisible and gain increased movement speed. When you tap the ability again you gain the position of the shade fearing all nearby enemies,,,Self,,Instant
+Shade of Horror,black,Leave your body behind stunned and jump into the shadow realm. You become invisible and gain increased movement speed. When you tap the ability again you induce a horrifying dream in target sleeping it for X seconds. Must be near your main target. Any damage awakes the target,,,Self,,Instant
+Shadow Step,black,Step towards target direction attacking all enemies in your path with all melee weapons dealing magical and physical damage (50:50%). Consumes momentum.,,,Ranged,,Instant
+Soul Harvester,black,For the next 15 seconds when an enemy unit dies within x yards around you gain health and mana.,,,Self,,Instant
+Turn,black,Target unit is turned into a allied minion for a short period of time and force it to attack nearby enemy units. Longer duration if weakened,,,Ranged,,Cast
+Rampant strike,black,Deals physical damage to the target unit. Increases momentum. Deals more damage per weakened stack.,,,Melee,Melee Weapon,Instant
+Arcane Ball,blue,"Conjure a slow moving ball of pure energy that moves in the target direction and deals X damage per 0,5 seconds to all enemy units in its path",,,Ranged,,Cast
+Arcane Barrage,blue,Shoot lots of arcane missiles at the target enemy. Additionaly hits all weakened targets around the target. can be chanelled while moving,,,Ranged,,Cast
+Arcane Blast,blue,"Deal X magic damage around you, weakens the targets",,,Ranged,,Instant
+Arcane Bolt,blue,Shoot an arcane projectile at the target enemy. Weakens the target,,,Ranged,,Instant
+Arcane Bomb,blue,"Place a orb of arcane energy at your location, that explodes after a 2 second delay, dealing high magical damage to all units in its range (also ally units) and disorient them afterwards if they are weakened",,,Ranged,,Instant
+Arcane Circle,blue,Create a barrier arround the caster that cannot be passed by enemy units and increases magic damage and cast speed for ally units inside,,,Self,,Instant
+Arcane Echo,blue,Repeat the last spell cast at 50% effectiveness.,,,Self,,Instant
+Arcane Lightning,blue,"Conure a chain lightning that damages the main target and blinds it, the jumps to 2 near enemie units. If enemies are weakend disarm them",,,Ranged,,Cast
+Arcane Splinters,blue,Conjure an arcane splinter every 2 seconds for 20 seconds that flies towards your current target every time you auto attack them or cast a spell. Deals low damage and sticks to them. If it reaches 5 stacks they explode dealing aoe damage around the target and immobilize them. If they are weakened stun them instead,,,Self,,Instant
+Arcane Storm,blue,Conjure an arcane storm around you silencing all enemies and slowing their movement speed.,,,Self,,Cast
+Arcane Strike,blue,Conjure an arcane cloud above targets head that sends out a flash every 3 seconds that damages it and immobilizes it for a shot period of time,,,Ranged,,Instant
+Blessing of Delusion,blue,All allies gain increased magical damage and mana regeneration,,,Global,,Instant
+Blink,blue,Teleport to target location. Press again within 3 Seconds to blink back to previous location. Breaks CC,,,Ranged,,Instant
+Disorient,blue,Disorient he enemy unit making wander around helplessly for x seconds. Direct damage awakens the target,,,Ranged,,Instant
+Counter Spell,blue,Interrupt target spellcasting . High threat,,,Ranged,,Instant
+Dimensional shift,blue,"shift target unit into a different dimension for x seconds. For ist duration the unit wont take any damage but 50% of the damage that would have been taken will be suffered at the end of the duration. The unit can move with 30% reduced movement speed, can cast spells, but cannot attack.",,,Ranged,,Instant
+Distort Reality,blue,"Select two units and instantly swap their positions. Valid targets include ally, enemy and self combinations.",,,Ranged,,Instant
+Gravity Well,blue,Create a singularity at the target location. Pull enemies toward its center and slow enemies inside.,,,Ranged,,Cast
+Magic Shield,blue,Conjure a bubble at target area that absorbs X magic damage,,,Ranged,,Cast
+Mana Storm,blue,Create Storm around you that damages (magic) you every seconds but regenerates equal amount of mana. Channeled ability.,,,Self,,"Cast, Hold"
+Master Magus,blue,for the next 15 seconds you can cast while moving and have increased cast speed.,,,Self,,Instant
+Mirror Duel,blue,Create an illusion of the current target which attacks and taunts the target. Takes 100% increased damage and deals 50% damage,,,Ranged,,Instant
+Mirror Image,blue,Create 2 Illusions of the target ally unit. They deal 33% of the target units damage and receive 200% damage. They perform the same actions as the target unit. Illsuion spell effects other than damage have no effect,,,Ranged,,Instant
+Purify,blue,"Cleanse one beneficial condition from target enemy. If one condition was cleansed, enemy gains weakend",,,Ranged,,Instant
+Replenish,blue,Increase mana regeneration around the caster for X seconds to ally units,,,Self,,Cast
+Rewind time,blue,"set back target unit to health, mana and positional values from 4 seconds ago",,,Ranged,,Instant
+Temporal Shift,blue,Target enemies movement speed and cast speed is greatly reduced while your values increase by the same amount,,,Ranged,,Instant
+Temporal Wave,blue,"Immobilizes all units around the caster for x seconds, if the targets are weakened they are stunned instead",,,Self,,Instant
+Timesphere,blue,"Create a timesphere at target location where enemies have there movement speed reduced drastically, enemy projectiles are stopped and allies pass through with increased movement speed",,,Ranged,,Cast
+Aspect of the Beast,green,Increase your physical damage and movement speed but decrease your armor and mana regeneration,,,Self,,Instant
+Aspect of the Hunter,green,Increase your attack range with ranged weapons and increase your ranged attack damage by x%. Decreases you melee and magical damage by x%,,,Self,,Instant
+Aspect of the Owl,green,"Increase your healing power and your mana regeneration, but decrease your magical and physical damage by x%",,,Self,,Instant
+Aspect of the Pack,green,Increase movement speed of allies around you for X and increase armor as long as they stay close to you.,,,Self,,Instant
+Aspect of the Tree,green,"Gain + X% armor, + X amount health, decrease movement speed by 10% and attack speed by 10%. Increase your threat generation while standing still.",,,Self,,Instant
+Barbed Arrow,green,Ranged Shot that slows the target enemy. If it is allready weakened immobilize it instead.,,,Ranged,Ranged Weapon,Instant
+Binding Shot,green,Shot an immoblizing arrow at the target unit. All untis around it cannot move farther away than x meters from the bound unit.,,,Ranged,Ranged Weapon,Instant
+Bush,green,Create a Disguise at your current location. It works as a line of sight object. The caster can walk in and becomes untargetable for ranged attacks but can still be hit by melee attacks. When he remains inside for 4s he gains +X% critical strike chance.,,,,,
+Camouflage,green,Become harder to detect (decrease aggro range significantly) for enemy units for x seconds. When you leave camouflage your next attack or spell is a guaranteed critical hit.,,,Self,,Instant
+Circle of Regrowth,green,place a circle on the ground where every ally player that walks in is healed by X every second.,,,Ranged,,Cast
+Cunning Blessing,green,All allies get increased heals and life regeneration,,,Global,,Instant
+Focused Kill Shot,green,Hold for up to 4 seconds for maximum damage. Deals physical ranged damage depending on the wind up time and 20% more damage if the unit has 25% health or less. If the enemy dies by this spell increase ranged attack speed for x seconds,,,Ranged,Ranged Weapon,"Cast, Hold"
+Grow,green,Heal target ally unit for x over x seconds (low) at the end of the duration heal it for additional x,,,Ranged,,Instant
+Healing Mushroom,green,Place a trap at your location. When an ally walks over it it heals for X over x seconds,,,Ranged,,Cast
+Healing Rain,green,Channel a healing rain that heals all allied units within ist radius with increasing rate the longer a unit remains,,,Ranged,,"Cast, Hold"
+Hibernation,green,"Turn all allies around you into a hibernating cocoon for 4 seconds, preventing all physical damage and healing for x% of max health per second",,,Self,,Instant
+Hunter Salve,green,For X seconds you shot all ranged auto attacks at every marked unit in range,,,Self,,Instant
+Hunters Call,green,"When activated all allies around you deal x% more damage + X% more if the targets are marked, stunned or immobilized.",,,Self,,Instant
+Hunters Run,green,become invisible and gain phased movement for a brief period of time and mark every unit u pass by. After u reaper shot every marked unit with ur ranged weapon instantly.,,,Self,,Instant
+Mark,green,"Mark the target, it is weakened and takes increased physical damage",,,Ranged,,Instant
+Poisoned Weapons,green,For the next 30 secondes your ranged and melee attacks have a chance to apply poison,,,Self,,Cast
+Purifying Wisp,green,Send a wisp at target location which cleanses one poison effect every 3 seconds around it. Lasts X seconds. When it leaves heal all allies for X times amount of cleansed poisons,,,Ranged,,Instant
+Rapid Fire,green,"Gain increased movement speed, increased ranged attack speed and the ability to shoot while running for X seconds",,,Self,,Instant
+Refresh,green,Place a 12 sec heal over time effect on the target via instant cast or hold for the whole effect over 3 second channel,,,Ranged,,Instant/Cast/Hold
+Reliable Shot,green,Shoot a target dealing X damage. Deals + X for evey poison stack currently on the target.,,,Ranged,Ranged Weapon,Cast
+Riposte,green,Becomes active after dodge or parry. Hit your main target instantly dealing weapon damage + X. +X% crit chance per momentum,,,Melee,Melee Weapon,Instant
+Retract,green,Jump back a litte shooting all enemnies in a cone in front of you slowing them. If they are weakened immobilze them instead.,,,Self,Ranged Weapon,Instant
+Ricochet Shot,green,Shoot a projectile that bounces from your main target to nearby enemies and poison them on hit,,,Ranged,Ranged Weapon,Instant
+Sleeping Dart,green,Fire a Dart with short range at target enemy that sleeps the target for x seconds. Any damage awakens the target. After it awakes it gains 1 stack of poison,,,Ranged,Ranged Weapon,Cast
+Sniping Shots,green,Increase your attack range for your ranged weapon and deal more damage the farther away you are from your targets,,,Self,Ranged Weapon,Instant
+Split Arrows,green,For the next x seconds your ranged auto attacks hit 2 other targets closest to your main target. Duration increased by momentum.,,,Self,Ranged Weapon,Instant
+Vine Field,green,"Place a trap at the ground, the first enemy that passes through it triggers the trap revealing a big vine field that slows enemies and applies one stack of poison every X seconds while they remain in the area",,,Self,,Cast
+Wild Growth,green,All your current heal over time effects tick 100% faster,,,Self,,Instant
+Arcane Missile,neutral,Fire a single arcane missile at the target for x magic damage. Increase momentum,,,Ranged,,Cast
+Bash,neutral,Interrupt target spellcasting and deal a low amount of damage. High threat,,,Melee,Melee Weapon,Instant
+Heavy Strike,neutral,Increase the Damage of your next auto attack by x. increase momentum,,,Melee,Melee Weapon,Instant
+Lesser Heal,neutral,heal target ally for x health,,,Ranged,,Cast
+Lesser regrowth,neutral,heal target ally for x health over x seconds,,,Ranged,,Instant
+Quick Shot,neutral,3 Charges. Shoot an instant shot at the target enemy with your ranged weapon. Increase momentum,,,Ranged,Ranged Weapon,Instant
+Quick Strike,neutral,Instantly attack the enemy for x melee physical damage. Increase momentum,,,Melee,Melee Weapon,Instant
+Taunt,neutral,Target unit is forced to attack you for 3 seconds,,,Melee,,Instant
+Battle Shout,red,Increase allied units physical damage and decrease enemies physical damage around you. Also applies weakened. Effect gets stronger the more allies are in radius,,,Self,,Instant
+Berserk,red,"Go into a frenzy, increasing attack speed by X% for X seconds. Costs X% current health to activate. Cannot change target or the effect is lost.",X% current health,,Self,,Instant
+Blessing of rage,red,All allies gain increased damage the more momentum they have,,,Global,,Instant
+Charge,red,Charges an enemy unit leaving behind a burning trail and stun the target for a brief period. Builds Momentum,,,Ranged,,Instant
+Cleave,red,Strike all enemies with mainhand damage + X in a cone in front of you. Build momentum when hitting more than 1 unit. At max momentum spend all momentum for +X % Damage,,,Melee,Melee Weapon,Instant
+Counter Attack,red,"When an enemies dodges, blocks or parries an attack, this ability becomes active. Instant attack with your weapon and immobilize the enemy. Increased crit chance with higher momentum",,,Melee,Melee Weapon,"Instant, reactive"
+Earth Blast,red,"Blast a cone shaped area in front of you with rocks dealing damage, silencing enemies for x seconds. At Max momentum Stun them instead. High Threat",,,Ranged,,Instant
+Elemental Orb,red,Conjure an elemental orb that surrounds you. As long as it surrounds you you immolate nearby enemies dealing damage per second. Whenever you fire a ranged attack or a targeted spell the orb also flies at the target and explodes for X damage around the target.,,,Self,,Cast
+Elemental Strike,red,Deal weapon damage as magical damage + X. Increase momentum,,,Melee,Melee Weapon,Instant
+Elemental blast,red,Blast all enemies in a cone in front of you for X Magic damage. High threat.,,,Ranged,,Instant
+Enrage,red,Becomes available after dealing or receiving a critical strike. Physical melee attacks deal X% increased damage for X seconds. You take 20% increased damage while Enraged.,,,Self,Critical strike dealt or received,"Instant, reactive"
+Find Weakness,red,Deal a small amount of damage and reduce the physical resistance of the target. High threat.,,,Melee,Melee Weapon,Instant
+Fire Blast,red,"Blast a cone shaped area in front of you with fire, dealing damage, and burning enemies, dealing damage over time. High threat, At max momentum always crits",,,Ranged,,Instant
+Frost Blast,red,Blast a cone shaped area in front of you with frost dealing damage and slowing enemies and reduce their attack speed. At max momentum freezes enemies in place for x seconds.,,,Ranged,,Instant
+Imbue Air,red,Imbue weapon. Chance on hit to increase attack speed by x% for x seconds.,,,Self,,Instant
+Imbue Earth,red,Imbue your Shield with earth. Your blocks increase your physical and magical mitigation and have a chance to stun the attacker.Also increases your threat generation.,,,Self,Shield,Instant
+Imbue Lightning,red,Imbue your weapon with lightning. Your attacks have a x% chance to trigger a chain lightning bouncing from your main target to 2 additional targets dealing x% spell damage,,,Self,Weapon,Instant
+Imbue Wind,red,Your auto attacks have a small chance to create momentum. Spells that create momentum have a 25% chance to create additional momentum,,,Self,Weapon,Instant
+Momentum Strike,red,Instant melee attack that deals weapon damage +x. Creates momentum. At max momentum consume momentum to guarantee a ciritcal hit and increase physical damage for x% for 10 seconds afterwards.,,,Melee,Melee Weapon,Instant
+Recklessness,red,"For X seconds, your critical strike chance is increased by 50% and your auto attacks have a chance to create Momentum. Healing effects on you are reduced by 50%.",,,Self,,Instant
+Regenerating Stikes,red,For the next x seconds your melee or ranged attacks replenish X mana,,,Self,,Instant
+Relentless Strike,red,"Strike that becomes avaiable after a critical strike. Instantly attack the enemy with your melee weapon, use momentum for increased damage. Allways is a critical hit.",,,Melee,Melee Weapon,Instant
+Shockwave,red,Jump into the air deal damage in a cone in front of you when landing and send out a shockwave which damages and weakens enemies in a line,,,Ranged,Melee Weapon,Cast
+Spirit of Earth,red,Send a spirit at target ally. The unit and all allied units around it have their armor increased and have a chance to create momentum when hit. Stays with the target for 30 seconds then fades away,,,Ranged,,Instant
+Spirit of Flames,red,Send a spirit at target ally. Enemy units around the target are burned every 3 seconds. Stays with the target for 10 seconds then fades away.,,,Ranged,,Instant
+Spirit of Rage,red,Send a spirit at target ally. The ally and all units around it have their physical damage increased by x% and a chance to create additional momentum whenever they gain momentum. Stays with the target for 10 seconds then fades away,,,Ranged,,Instant
+Spirit of Rain,red,Send a spirit at target ally. The ally and all units around it are healed for a small amount and have increased mana regeneration. Stays with the target for 20 seconds then fades away.,,,Ranged,,Instant
+Spirit of Thunder,red,Send a spirit at target ally. The ally and all units around it have a there attack speed increased for x% and a chance to doublehot the target with auto attacks. Stays with the target for 10 seconds then fades away.,,,Ranged,,Instant
+Split Earth,red,Create a fissure of lava that damages all units every second (including allies) and applies buring when they leave the area.,,,Ranged,,Instant
+Tidal Wave,red,"Send forth a wave of water dealing damage, knocking enemies back and cleanse burning of allied units",,,Ranged,,Instant
+Whirlwind,red,"Attack all units around you with casters mainhand weapon. If you have momentum you can spend it to hold down the ability to continue spinning, draining mana and momentum every second and continue to attack enemies every second. Can trigger on hit effects. , max duration increased by momentum. Breaks slows and immobilze effects",,,Melee,Melee Weapon,"Cast, Hold"
+Barricades,white,Create a straight line barricade that enemies cannot pass. Enemies near the barricade take X damage every second.,,,Ranged,,Cast
+Bind,white,"Binds 2 units together, either friendly or enemy units. Whatever damage or heal one unit receives, the other unit receives aswell. Breaks if units split too far.",,,Ranged,,Instant
+Blast of light,white,heal all allies around you for x,,,Self,,Instant
+Blessing of Mercy,white,All allies gain increased armor and health.,,,Global,,Instant
+Chastise,white,Enemies take X Dmg when attacking you and have a 20% chance to get weakened. Lasts X seconds,,,Self,,Instant
+Circle of Mending,white,Place a circle on the ground. After 3 seconds build up it heals all ally units within the circle for x,,,Ranged,,Cast
+Cleanse,white,Remove one negative condition of the target allied unit. If a conduition was removed gain momentum,,,Ranged,,Instant
+Conjure Beast,white,"Conjures a beast of light that attacks enemies. High damage, low health.",,,Self,,Cast
+Conjure Guardian,white,Conjure a guardian of light fighting for the caster. Draws aggro and taunts. High resistances and health. Low damage,,,Self,,Cast
+Conjure Cleric,,Conjure a cleric of light that heals the lowest target of the party. Also casts an absorbing shield on the highest threat member of the party.,,,Self,,Cast
+Divine Intervention,white,Raise your shield and block all incoming damage for 3 seconds. Also prevents all damage from allies standing in a small cone behind the caster.,,,Self,shield,Instant
+Ground Slam,white,Hit the ground reducing enemy attack speed and dealing low damage and weaken them. High threat.,,,Self,Melee Weapon,Instant
+Heal,white,"Heal a target ally. Hold down ability, max 4 seconds. Heal becomes stronger the longer the cast goes but also costs more mana. Can be instant tapped for minimal heal",,,Ranged,,"Cast, Hold"
+Holy Ground,white,Consecrate the ground around you dealing little damage to enemies standing inside an increase their chance to miss. Enemies standing inside holy gorund for 4s gain weakened.,,,Self,,Instant
+Light Orb,white,send a small orb of light toward target ally healing it and jump to the next ally after 1 second.,,,Ranged,,Instant
+Mercys Angels,white,Summon an untargetable angel at every ally unit that heals it for X (depending on your healing power) every 3 seconds. Lasts for 12 seconds.,,,Ranged,,Cast
+Mercys Call,white,Call out all enemies around you forcing them to attack you adn apply weakened to them. Your physical resistance is increased for 3 seconds.,,,Self,,Instant
+Pull,white,"Pulls the target unit (ally or enemy) towards your position. Enemies pulled are forced to attack you for 3 seconds, allies gain +X% movement speed for 3 seconds.",,,Ranged,,Instant
+Ray of Mercy,white,"Send out a beam of light where you are facing healing allies and dealing damage to units it touches. (pierces units), Hold for duration, costs mana per second.",,,Ranged,,"Cast, Hold"
+Retaliate,white,Becomes active after block. Perform a swing around you hitting all enemies around you for melee damage. Gain +x% block chance for x seconds when you hit a weakened unit. High threat.,,,Melee,Melee Weapon,Instant
+Save,white,Target ally cannot move or take any action but wont take any damage for 3 seconds and is cleansed from all negative effects,,,Ranged,,Instant
+Shield Bash,white,"Becomes active after you block and attack. Bash all enemies in a cone in front of you with your shield, deal damage, weaken them and push them back a little. Enemies hit are slowed for x seconds. High threat",,,Melee,Shield,"Instant, reactive"
+Shield of Mercy,white,Target ally gets a shield that absorbs X amount of damage.,,,Ranged,,Instant
+Spell Reflect,white,Raise your shield and reflect all incoming projectile based spells targeted at you or allies around your for up to seconds. You are slowed by x% during this time,,,Self,Shield,"Instant, Hold"
+Strong Grip,white,Increase your block chance for 5 seconds by a substantial amount. Gain Momentum for every succesful block,,,Self,Shield,Instant
+Tactical Master,white,Becomes active after you block an attack. Increase your physical mitigation by x%. Stacks up to 5 times.,,,Self,Shield,"Instant, reactive"
+Well of light,white,Summon a well of light. Allied players can use it to create an orb of light that heals it for X (depending on your healing power). Shares Cooldown with healing potions of any kind,,,Self,,Cast
