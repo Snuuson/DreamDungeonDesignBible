@@ -48,7 +48,32 @@
     .act { padding: 18px; border: 1px solid #414141; border-radius: 12px; background: #202020; }
     .act h3 { margin: 0; font-size: 1.2rem; }
     .act p { margin: 3px 0 14px; font-size: .92rem; }
-    .act-sample { display: block; width: 100%; aspect-ratio: 16 / 9; margin: 14px 0; border: 1px solid #4d4d4d; border-radius: 8px; object-fit: cover; }
+    .act-samples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+    .act-sample-trigger {
+      overflow: hidden; width: 100%; padding: 0; border: 1px solid #4d4d4d; border-radius: 8px;
+      background: #151515; color: #d9d5cb; text-align: left;
+    }
+    .act-sample-trigger:hover { border-color: #d6cda1; background: #252525; }
+    .act-sample-trigger:focus-visible { outline: 3px solid #d6cda1; outline-offset: 2px; }
+    .act-sample { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .act-sample-label { display: block; padding: 7px 9px; font-size: .76rem; font-weight: 700; letter-spacing: .04em; }
+    .image-modal {
+      width: min(96vw, 1600px); max-width: none; max-height: 96vh; padding: 0;
+      border: 1px solid #5a5a58; border-radius: 12px; background: #101010; color: #e9e5db;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .75);
+    }
+    .image-modal::backdrop { background: rgba(0, 0, 0, .86); }
+    .image-modal figure { display: grid; margin: 0; }
+    .image-modal img { display: block; max-width: 100%; max-height: calc(96vh - 48px); margin: auto; object-fit: contain; }
+    .image-modal figcaption { padding: 11px 56px 12px 14px; color: #c7c2b8; font-size: .85rem; }
+    .image-modal-close {
+      position: absolute; z-index: 1; top: 8px; right: 8px; width: 36px; height: 36px; padding: 0;
+      border: 1px solid #6a665d; border-radius: 50%; background: rgba(16, 16, 16, .88); color: #f2eee4;
+      font-size: 1.35rem; line-height: 1;
+    }
+    .style-anchor { padding: 18px; border: 1px solid #51514d; border-radius: 12px; background: #202020; }
+    .style-anchor img { display: block; width: 100%; aspect-ratio: 16 / 9; border: 1px solid #4d4d4d; border-radius: 8px; object-fit: cover; }
+    .style-anchor p { margin: 12px 0 0; color: #c7c2b8; }
     .palette-label { margin: 16px 0 8px; color: #d6cda1; font-size: .76rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
     .copy-act { margin: 0 0 14px; padding: 8px 11px; background: #514a36; color: #f2eee4; font-size: .8rem; }
     .ability-groups { display: grid; gap: 18px; }
@@ -84,7 +109,7 @@
     .label { padding: 11px 12px 12px; }
     .name { display: block; font-weight: 650; }
     code { display: block; margin-top: 2px; color: #c7c2b8; font-size: .9rem; }
-    @media (max-width: 520px) { .copy-panel { grid-template-columns: 1fr; } button { width: 100%; } .act-colours { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .copy-panel { grid-template-columns: 1fr; } button { width: 100%; } .image-modal-close { width: 36px; } .act-colours { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
@@ -96,6 +121,12 @@
       <textarea id="hexCodes" aria-label="All palette hex codes" readonly>#F2E7C0, #D9C88A, #A5B86A, #719E82, #5B8590, #65769A, #806B8D, #AD6E75, #8F5B55, #6E473F, #4A4A4A, #6B6B6B, #8C8C8C, #5A2D2D, #7B3F3F, #A15555, #202020, #353535, #000000, #D6CDA1, #B4A06F, #7A704F, #9A4B4B, #5F4D32, #FFF4D2, #9C7345, #C2C97A, #4F6246, #8CA2A5, #3D555E, #A892AA, #503C58, #C06A62, #44252B, #5A5A58, #111417, #D9E3D6, #326B69, #6F9D73, #B4C98A, #542B2E, #E1B957, #54A9A4, #A6B94A, #D65045, #A077B5, #294633, #4F7A46, #75A858, #9DCB67, #C7E77A, #EEF3B4, #17181C, #30313A, #585567, #9C99AA, #D2CCE0, #8C856E, #E4D18F, #F5E8BA, #FFF8DC, #D8E4E2, #F0A35A, #233A4A, #3D6474, #7FA9B2, #A7D6D0, #E0F1E7, #5E4630, #B96D3E, #E8D9AD, #6B5A82, #A65355, #F3C865, #3E4140, #657986, #7C6F7F, #A6603E, #D2C08C, #E0C55E, #3E3431, #A47B43, #C7B98B, #995E5A, #657449, #E7E8D2, #2F304D, #774A67, #B5676C, #B08B52, #D4C9A3, #E5D98A, #151819, #3E5361, #8D9390, #C7C2AE, #64475C, #79A7A0, #0A0A0B, #161D2B, #4A5561, #5D5369, #B6AE9B, #B9D7D0</textarea>
       <button id="copyButton" type="button">Copy hex codes</button>
     </div>
+
+    <h2>Canonical art style</h2>
+    <section class="style-anchor">
+      <img src="style-anchors/dungeon-style-keyframe-v5.png" alt="Approved Dungeon Style Keyframe V5">
+      <p>All concept references use this single style anchor: stylized 3D with soft organic terrain, broad clean forms, softly shaded low-poly characters, restrained surface detail, eye-level 35mm framing, atmospheric depth, and clear gameplay silhouettes.</p>
+    </section>
 
     <h2>Six-act journey</h2>
     <section class="acts" id="acts"></section>
@@ -130,6 +161,9 @@
     <section class="agent-panel">
       <p>Copy this brief when assigning an agent to create game art, UI, environments, props, or marketing visuals with this palette.</p>
       <textarea id="agentBrief" aria-label="Agent palette design brief" readonly>GAME PALETTE DESIGN BRIEF
+
+STYLE LOCK: Use the approved Dungeon Style Keyframe V5 as the sole visual-style reference. Preserve its soft organic terrain, broad clean rock forms, softly shaded low-poly characters, simple cloth and anatomy planes, restrained detail, eye-level 35mm camera language, atmospheric depth, and readable creature proportions. Avoid spikes, thorn backs, repeated masks, and unnecessary surface complexity.
+TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Early Act 5 retains roughly 20% teal bioluminescence and violet cave shadow while firelight becomes dominant. Avoid a hard visual cut.
 
 1. Identify the active act before designing. Use that act's Environment colors for roughly 90% of the asset or scene.
 2. Match the act's light source: sunlight (Act 1), reflected daylight (Act 2), god rays (Act 3), bioluminescence (Act 4), firelight (Act 5), then sparse dying embers (Act 6).
@@ -196,6 +230,14 @@
 
   </main>
 
+  <dialog class="image-modal" id="imageModal" aria-labelledby="modalCaption">
+    <button class="image-modal-close" id="imageModalClose" type="button" aria-label="Close full-size image">×</button>
+    <figure>
+      <img id="modalImage" alt="">
+      <figcaption id="modalCaption"></figcaption>
+    </figure>
+  </dialog>
+
   <script>
     const accents = [
       ['Beacon Gold — Interact / Objective', '#E1B957'],
@@ -235,7 +277,7 @@
         ['Forest Umber', '#5E4630'], ['Fox Copper', '#B96D3E'],
         ['Cream Pelt', '#E8D9AD'], ['Plum Feather', '#6B5A82'],
         ['Berry Mark', '#A65355'], ['Honey Eye', '#F3C865']
-      ], 'act-creature-samples/act-1-surface-haven.png'],
+      ], ['act-creature-samples/act-1-surface-haven.png', 'act-creature-samples-v3/act-1-surface-haven.png']],
       ['Act 2 — Canyon Descent', 'The sky narrows above weathered paths, cliff walls, and fallen ruins.', [
         ['Aged Bone (Skull)', '#D6CDA1'], ['Rusted Bronze (Buckles)', '#B4A06F'],
         ['Lichen Olive', '#7A704F'], ['Ash Oxide', '#8C8C8C'],
@@ -244,7 +286,7 @@
         ['Canyon Charcoal', '#3E4140'], ['Dust Blue', '#657986'],
         ['Mauve Hide', '#7C6F7F'], ['Rust Carapace', '#A6603E'],
         ['Pale Horn', '#D2C08C'], ['Amber Eye', '#E0C55E']
-      ], 'act-creature-samples/act-2-canyon-descent.png'],
+      ], ['act-creature-samples/act-2-canyon-descent.png', 'act-creature-samples-v3/act-2-canyon-descent.png']],
       ['Act 3 — Cave Threshold', 'The last surface light falls through the cave mouth in enormous god rays.', [
         ['Cave Ray', '#D9E3D6'], ['Fog Blue', '#8CA2A5'],
         ['Distant Teal', '#5B8590'], ['Worn Blue', '#65769A'],
@@ -253,7 +295,7 @@
         ['Cave Coal', '#3E3431'], ['Ochre Hide', '#A47B43'],
         ['Silt Pelt', '#C7B98B'], ['Rust Crest', '#995E5A'],
         ['Moss Shell', '#657449'], ['Ray Eye', '#E7E8D2']
-      ], 'act-creature-samples/act-3-cave-threshold.png'],
+      ], ['act-creature-samples/act-3-cave-threshold.png', 'act-creature-samples-v3/act-3-cave-threshold.png']],
       ['Act 4 — Living Depths', 'No sunlight remains: plants, spores, and cave creatures create the glow.', [
         ['Plum Shadow', '#503C58'], ['Twilight Mauve', '#806B8D'],
         ['Deep Cave Teal', '#326B69'], ['Glow Moss', '#6F9D73'],
@@ -262,8 +304,8 @@
         ['Deep Indigo', '#2F304D'], ['Fungal Violet', '#774A67'],
         ['Cave Coral', '#B5676C'], ['Shell Ochre', '#B08B52'],
         ['Pale Chitin', '#D4C9A3'], ['Spore Eye', '#E5D98A']
-      ], 'act-creature-samples/act-4-living-depths.png'],
-      ['Act 5 — Cinder Warrens', 'Torchlight and braziers reveal blood, soot, and dangerous old stone.', [
+      ], ['act-creature-samples/act-4-living-depths.png', 'act-creature-samples-v3/act-4-living-depths.png']],
+      ['Act 5 — Cinder Warrens', 'Torchlight overtakes the last dying bioluminescence, revealing blood, soot, and dangerous old stone.', [
         ['Clotted Wine', '#44252B'], ['Old Gores', '#5A2D2D'],
         ['Bloodied Crimson', '#7B3F3F'], ['Gore-Mud', '#5F4D32'],
         ['Torch Ember', '#C06A62'], ['Fire Flash', '#F0A35A']
@@ -271,7 +313,7 @@
         ['Soot Black', '#151819'], ['Iron Blue', '#3E5361'],
         ['Ash Hide', '#8D9390'], ['Bone Plate', '#C7C2AE'],
         ['Bruised Hide', '#64475C'], ['Cold Eye', '#79A7A0']
-      ], 'act-creature-samples/act-5-cinder-warrens.png'],
+      ], ['act-creature-samples/act-5-cinder-warrens.png', 'act-creature-samples-v3/act-5-cinder-warrens.png']],
       ['Act 6 — Deepest Dark', 'Only dying embers remain; the abyss is almost total black.', [
         ['True Pitch', '#000000'], ['Abyssal Blue-Black', '#111417'],
         ['Crystalline Void', '#202020'], ['Stone Dark', '#353535'],
@@ -280,7 +322,7 @@
         ['Pitch Pelt', '#0A0A0B'], ['Abyss Blue', '#161D2B'],
         ['Dead Steel', '#4A5561'], ['Grave Violet', '#5D5369'],
         ['Pallid Bone', '#B6AE9B'], ['Ghost Eye', '#B9D7D0']
-      ], 'act-creature-samples/act-6-deepest-dark.png']
+      ], ['act-creature-samples/act-6-deepest-dark.png', 'act-creature-samples-v3/act-6-deepest-dark.png']]
     ];
     function render(target, colours) {
       document.getElementById(target).innerHTML = colours.map(([name, hex]) => `
@@ -307,11 +349,13 @@
       abilityTarget.appendChild(group);
     });
     const actsTarget = document.getElementById('acts');
-    acts.forEach(([title, description, environmentColours, creatureColours, samplePath]) => {
+    acts.forEach(([title, description, environmentColours, creatureColours, samplePaths]) => {
       const act = document.createElement('article');
       act.className = 'act';
       const actHexes = [...environmentColours, ...creatureColours].map(([, hex]) => hex).join(', ');
-      act.innerHTML = '<h3>' + title + '</h3><p>' + description + '</p><img class="act-sample" src="' + samplePath + '" alt="' + title + ' reference image"><button class="copy-act" type="button" data-hexes="' + actHexes + '" aria-label="Copy act palette" title="Copy act palette">Act ⧉</button><h4 class="palette-label">Environment</h4><div class="act-colours environment-colours"></div><h4 class="palette-label">Creature colors</h4><div class="act-colours creature-colours"></div>';
+      const sampleLabels = ['Creature samples', 'Creature samples V3'];
+      const samplesMarkup = samplePaths.map((samplePath, index) => '<button class="act-sample-trigger" type="button" data-full-image="' + samplePath + '" data-caption="' + title + ' — ' + sampleLabels[index] + '" aria-label="Open full-size ' + sampleLabels[index] + ' for ' + title + '"><img class="act-sample" src="' + samplePath + '" alt="' + title + ' ' + sampleLabels[index] + '"><span class="act-sample-label">' + sampleLabels[index] + '</span></button>').join('');
+      act.innerHTML = '<h3>' + title + '</h3><p>' + description + '</p><div class="act-samples">' + samplesMarkup + '</div><button class="copy-act" type="button" data-hexes="' + actHexes + '" aria-label="Copy act palette" title="Copy act palette">Act ⧉</button><h4 class="palette-label">Environment</h4><div class="act-colours environment-colours"></div><h4 class="palette-label">Creature colors</h4><div class="act-colours creature-colours"></div>';
       function addActColours(target, colours) {
         colours.forEach(([name, hex]) => {
           const item = document.createElement('div');
@@ -367,6 +411,25 @@
       if (!button) return;
       await copyText(button.dataset.hexes);
       showCopied(button, 'Copy ability palette');
+    });
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    document.addEventListener('click', event => {
+      const trigger = event.target.closest('.act-sample-trigger');
+      if (!trigger) return;
+      modalImage.src = trigger.dataset.fullImage;
+      modalImage.alt = trigger.dataset.caption;
+      modalCaption.textContent = trigger.dataset.caption;
+      imageModal.showModal();
+    });
+    document.getElementById('imageModalClose').addEventListener('click', () => imageModal.close());
+    imageModal.addEventListener('click', event => {
+      if (event.target === imageModal) imageModal.close();
+    });
+    imageModal.addEventListener('close', () => {
+      modalImage.removeAttribute('src');
+      modalImage.alt = '';
     });
   </script>
 </body>
