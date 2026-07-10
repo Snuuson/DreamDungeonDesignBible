@@ -74,7 +74,9 @@
     .style-anchor { padding: 18px; border: 1px solid #51514d; border-radius: 12px; background: #202020; }
     .style-anchor img { display: block; width: 100%; aspect-ratio: 16 / 9; border: 1px solid #4d4d4d; border-radius: 8px; object-fit: cover; }
     .style-anchor p { margin: 12px 0 0; color: #c7c2b8; }
-    .palette-label { margin: 16px 0 8px; color: #d6cda1; font-size: .76rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+    .palette-label { display: flex; align-items: center; gap: 9px; margin: 16px 0 8px; color: #d6cda1; font-size: .76rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+    .copy-section { padding: 4px 9px; border: 1px solid #51514d; border-radius: 6px; background: #343431; color: #e9e5db; font-size: .72rem; font-weight: 700; letter-spacing: .04em; line-height: 1; }
+    .copy-section:hover { background: #d6cda1; color: #202020; }
     .copy-act { margin: 0 0 14px; padding: 8px 11px; background: #514a36; color: #f2eee4; font-size: .8rem; }
     .ability-groups { display: grid; gap: 18px; }
     .ability-group { padding: 18px; border: 1px solid #414141; border-radius: 12px; background: #202020; }
@@ -353,9 +355,11 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
       const act = document.createElement('article');
       act.className = 'act';
       const actHexes = [...environmentColours, ...creatureColours].map(([, hex]) => hex).join(', ');
+      const environmentHexes = environmentColours.map(([, hex]) => hex).join(', ');
+      const creatureHexes = creatureColours.map(([, hex]) => hex).join(', ');
       const sampleLabels = ['Creature samples', 'Creature samples V3'];
       const samplesMarkup = samplePaths.map((samplePath, index) => '<button class="act-sample-trigger" type="button" data-full-image="' + samplePath + '" data-caption="' + title + ' — ' + sampleLabels[index] + '" aria-label="Open full-size ' + sampleLabels[index] + ' for ' + title + '"><img class="act-sample" src="' + samplePath + '" alt="' + title + ' ' + sampleLabels[index] + '"><span class="act-sample-label">' + sampleLabels[index] + '</span></button>').join('');
-      act.innerHTML = '<h3>' + title + '</h3><p>' + description + '</p><div class="act-samples">' + samplesMarkup + '</div><button class="copy-act" type="button" data-hexes="' + actHexes + '" aria-label="Copy act palette" title="Copy act palette">Act ⧉</button><h4 class="palette-label">Environment</h4><div class="act-colours environment-colours"></div><h4 class="palette-label">Creature colors</h4><div class="act-colours creature-colours"></div>';
+      act.innerHTML = '<h3>' + title + '</h3><p>' + description + '</p><div class="act-samples">' + samplesMarkup + '</div><button class="copy-act" type="button" data-hexes="' + actHexes + '" aria-label="Copy act palette" title="Copy act palette">Act ⧉</button><h4 class="palette-label">Environment<button class="copy-section" type="button" data-hexes="' + environmentHexes + '" aria-label="Copy environment palette" title="Copy environment palette">⧉</button></h4><div class="act-colours environment-colours"></div><h4 class="palette-label">Creature colors<button class="copy-section" type="button" data-hexes="' + creatureHexes + '" aria-label="Copy creature palette" title="Copy creature palette">⧉</button></h4><div class="act-colours creature-colours"></div>';
       function addActColours(target, colours) {
         colours.forEach(([name, hex]) => {
           const item = document.createElement('div');
@@ -405,6 +409,12 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
       if (!button) return;
       await copyText(button.dataset.hexes);
       showCopied(button, 'Act ⧉');
+    });
+    document.addEventListener('click', async event => {
+      const button = event.target.closest('.copy-section');
+      if (!button) return;
+      await copyText(button.dataset.hexes);
+      showCopied(button, '⧉');
     });
     document.addEventListener('click', async event => {
       const button = event.target.closest('.copy-ability');
