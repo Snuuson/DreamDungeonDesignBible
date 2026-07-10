@@ -72,7 +72,9 @@
       font-size: 1.35rem; line-height: 1;
     }
     .style-anchor { padding: 18px; border: 1px solid #51514d; border-radius: 12px; background: #202020; }
-    .style-anchor img { display: block; width: 100%; aspect-ratio: 16 / 9; border: 1px solid #4d4d4d; border-radius: 8px; object-fit: cover; }
+    .style-anchor img { display: block; width: 100%; aspect-ratio: 16 / 9; border: 1px solid #4d4d4d; border-radius: 8px; object-fit: cover; cursor: zoom-in; }
+    .style-anchor img:hover { border-color: #d6cda1; }
+    .style-anchor img:focus-visible { outline: 3px solid #d6cda1; outline-offset: 2px; }
     .style-anchor p { margin: 12px 0 0; color: #c7c2b8; }
     .palette-label { display: flex; align-items: center; gap: 9px; margin: 16px 0 8px; color: #d6cda1; font-size: .76rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
     .copy-section { padding: 4px 9px; border: 1px solid #51514d; border-radius: 6px; background: #343431; color: #e9e5db; font-size: .72rem; font-weight: 700; letter-spacing: .04em; line-height: 1; }
@@ -126,7 +128,7 @@
 
     <h2>Canonical art style</h2>
     <section class="style-anchor">
-      <img src="style-anchors/dungeon-style-keyframe-v5.png" alt="Approved Dungeon Style Keyframe V5">
+      <img src="style-anchors/dungeon-style-keyframe-v5.png" alt="Approved Dungeon Style Keyframe V5" tabindex="0" role="button" aria-label="Open full-size Canonical art style keyframe" data-full-image="style-anchors/dungeon-style-keyframe-v5.png" data-caption="Canonical art style — Approved Dungeon Style Keyframe V5">
       <p>All concept references use this single style anchor: stylized 3D with soft organic terrain, broad clean forms, softly shaded low-poly characters, restrained surface detail, eye-level 35mm framing, atmospheric depth, and clear gameplay silhouettes.</p>
     </section>
 
@@ -425,13 +427,23 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
     const imageModal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
     const modalCaption = document.getElementById('modalCaption');
-    document.addEventListener('click', event => {
-      const trigger = event.target.closest('.act-sample-trigger');
-      if (!trigger) return;
+    function openImageModal(trigger) {
       modalImage.src = trigger.dataset.fullImage;
       modalImage.alt = trigger.dataset.caption;
       modalCaption.textContent = trigger.dataset.caption;
       imageModal.showModal();
+    }
+    document.addEventListener('click', event => {
+      const trigger = event.target.closest('[data-full-image]');
+      if (!trigger) return;
+      openImageModal(trigger);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const trigger = event.target.closest('.style-anchor img[data-full-image]');
+      if (!trigger) return;
+      event.preventDefault();
+      openImageModal(trigger);
     });
     document.getElementById('imageModalClose').addEventListener('click', () => imageModal.close());
     imageModal.addEventListener('click', event => {
