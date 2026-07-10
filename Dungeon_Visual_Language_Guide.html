@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dungeon Visual Language Guide</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 40px 20px;
+      background: #171717;
+      color: #e9e5db;
+      font: 16px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 1050px; margin: auto; }
+    h1 { margin: 0 0 8px; font-size: clamp(2rem, 5vw, 3.25rem); }
+    p { margin: 0 0 24px; color: #bcb8af; }
+    .copy-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      padding: 14px;
+      margin-bottom: 32px;
+      border: 1px solid #393939;
+      border-radius: 12px;
+      background: #202020;
+    }
+    textarea {
+      width: 100%; min-height: 86px; resize: vertical;
+      padding: 12px; border: 1px solid #4c4c4c; border-radius: 8px;
+      background: #101010; color: #f2eee4; font: 14px/1.45 ui-monospace, Consolas, monospace;
+    }
+    button {
+      align-self: start; padding: 12px 16px; border: 0; border-radius: 8px;
+      background: #d6cda1; color: #202020; font-weight: 700; cursor: pointer;
+    }
+    button:hover { background: #f2e7c0; }
+    .hex-row { display: flex; align-items: center; gap: 7px; margin-top: 2px; }
+    .hex-row code { flex: 1; margin: 0; }
+    .copy-colour { width: 32px; margin: 0; padding: 5px 6px; border: 1px solid #51514d; background: #343431; color: #e9e5db; font-size: .9rem; line-height: 1; }
+    .copy-colour:hover { background: #d6cda1; color: #202020; }
+    h2 { margin: 32px 0 14px; font-size: 1.1rem; letter-spacing: .08em; text-transform: uppercase; color: #d6cda1; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+    .acts { display: grid; gap: 18px; }
+    .act { padding: 18px; border: 1px solid #414141; border-radius: 12px; background: #202020; }
+    .act h3 { margin: 0; font-size: 1.2rem; }
+    .act p { margin: 3px 0 14px; font-size: .92rem; }
+    .act-sample { display: block; width: 100%; aspect-ratio: 16 / 9; margin: 14px 0; border: 1px solid #4d4d4d; border-radius: 8px; object-fit: cover; }
+    .palette-label { margin: 16px 0 8px; color: #d6cda1; font-size: .76rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+    .copy-act { margin: 0 0 14px; padding: 8px 11px; background: #514a36; color: #f2eee4; font-size: .8rem; }
+    .ability-groups { display: grid; gap: 18px; }
+    .ability-group { padding: 18px; border: 1px solid #414141; border-radius: 12px; background: #202020; }
+    .ability-heading { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .ability-heading i { width: 18px; height: 18px; border-radius: 50%; background: var(--identity); box-shadow: 0 0 14px var(--identity); }
+    .ability-heading h3 { margin: 0; font-size: 1.2rem; }
+    .ability-group p { margin: 0 0 12px; color: #c7c2b8; font-size: .92rem; }
+    .copy-ability { margin: 0 0 14px; padding: 8px 11px; background: #353535; color: #f2eee4; font-size: .8rem; }
+    .act-colours { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+    .act-colour { min-width: 0; }
+    .act-chip { height: 52px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, .13); }
+    .act-colour span { display: block; overflow: hidden; margin-top: 5px; color: #d9d5cb; font-size: .78rem; text-overflow: ellipsis; white-space: nowrap; }
+    .act-colour code { overflow: hidden; margin-top: 0; font-size: .72rem; text-overflow: ellipsis; }
+    .guide { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+    .guide-card { padding: 18px; border: 1px solid #414141; border-radius: 12px; background: #202020; }
+    .guide-card h3 { margin: 0 0 8px; color: #d6cda1; font-size: 1.05rem; }
+    .guide-card p, .guide-card li { color: #c7c2b8; font-size: .93rem; }
+    .guide-card p { margin: 0; }
+    .guide-card ul { margin: 9px 0 0; padding-left: 20px; }
+    .guide-card li + li { margin-top: 5px; }
+    .agent-panel { padding: 18px; border: 1px solid #51514d; border-radius: 12px; background: #202020; }
+    .agent-panel p { color: #c7c2b8; }
+    .agent-panel textarea { min-height: 250px; margin-top: 10px; }
+    .agent-panel button { margin-top: 10px; }
+    .rule { display: grid; grid-template-columns: 60fr 30fr 10fr; gap: 3px; margin-top: 12px; height: 16px; }
+    .rule span { border-radius: 3px; }
+    .rule-labels { display: grid; grid-template-columns: 60fr 30fr 10fr; gap: 3px; margin-top: 4px; color: #aaa69f; font-size: .72rem; }
+    .swatch {
+      overflow: hidden; border: 1px solid #414141; border-radius: 10px; background: #222;
+    }
+    .color { height: 92px; border-bottom: 1px solid #414141; }
+    .label { padding: 11px 12px 12px; }
+    .name { display: block; font-weight: 650; }
+    code { display: block; margin-top: 2px; color: #c7c2b8; font-size: .9rem; }
+    @media (max-width: 520px) { .copy-panel { grid-template-columns: 1fr; } button { width: 100%; } .act-colours { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Dungeon Visual Language Guide</h1>
+    <p>A six-act journey from sunlit surface life into a firelit, hostile abyss.</p>
+
+    <div class="copy-panel">
+      <textarea id="hexCodes" aria-label="All palette hex codes" readonly>#F2E7C0, #D9C88A, #A5B86A, #719E82, #5B8590, #65769A, #806B8D, #AD6E75, #8F5B55, #6E473F, #4A4A4A, #6B6B6B, #8C8C8C, #5A2D2D, #7B3F3F, #A15555, #202020, #353535, #000000, #D6CDA1, #B4A06F, #7A704F, #9A4B4B, #5F4D32, #FFF4D2, #9C7345, #C2C97A, #4F6246, #8CA2A5, #3D555E, #A892AA, #503C58, #C06A62, #44252B, #5A5A58, #111417, #D9E3D6, #326B69, #6F9D73, #B4C98A, #542B2E, #E1B957, #54A9A4, #A6B94A, #D65045, #A077B5, #294633, #4F7A46, #75A858, #9DCB67, #C7E77A, #EEF3B4, #17181C, #30313A, #585567, #9C99AA, #D2CCE0, #8C856E, #E4D18F, #F5E8BA, #FFF8DC, #D8E4E2, #F0A35A, #233A4A, #3D6474, #7FA9B2, #A7D6D0, #E0F1E7, #5E4630, #B96D3E, #E8D9AD, #6B5A82, #A65355, #F3C865, #3E4140, #657986, #7C6F7F, #A6603E, #D2C08C, #E0C55E, #3E3431, #A47B43, #C7B98B, #995E5A, #657449, #E7E8D2, #2F304D, #774A67, #B5676C, #B08B52, #D4C9A3, #E5D98A, #151819, #3E5361, #8D9390, #C7C2AE, #64475C, #79A7A0, #0A0A0B, #161D2B, #4A5561, #5D5369, #B6AE9B, #B9D7D0</textarea>
+      <button id="copyButton" type="button">Copy hex codes</button>
+    </div>
+
+    <h2>Six-act journey</h2>
+    <section class="acts" id="acts"></section>
+
+    <h2>Shared gameplay accents</h2>
+    <section class="grid" id="accents"></section>
+
+    <h2>Ability effect groups</h2>
+    <section class="ability-groups" id="abilityGroups"></section>
+
+    <h2>Ability readability across every act</h2>
+    <section class="guide">
+      <article class="guide-card">
+        <h3>One global ability system</h3>
+        <p>Green, Black, White, Red, and Blue abilities keep the same identity throughout the entire dungeon. The active act changes the environment—not the spell's palette.</p>
+      </article>
+      <article class="guide-card">
+        <h3>Always use a contrast pair</h3>
+        <p>Build every effect with at least two values from its ability group: a dark core or outline plus a bright glow, edge, particle, or impact flash. Never use only a middle value.</p>
+      </article>
+      <article class="guide-card">
+        <h3>Adapt to the current light</h3>
+        <p>In Acts 1–3, lead with the dark core or outline against bright scenery. In Acts 4–6, lead with the glow or flash against dark scenery. Preserve the same ability hue in both cases.</p>
+      </article>
+      <article class="guide-card">
+        <h3>Test the difficult matches</h3>
+        <p>Check Green against grass and cave plants, Blue against cave haze, Red against fire, and Black against the deepest dark. The spell must still read in grayscale and at a quick glance.</p>
+      </article>
+    </section>
+
+    <h2>Agent design brief</h2>
+    <section class="agent-panel">
+      <p>Copy this brief when assigning an agent to create game art, UI, environments, props, or marketing visuals with this palette.</p>
+      <textarea id="agentBrief" aria-label="Agent palette design brief" readonly>GAME PALETTE DESIGN BRIEF
+
+1. Identify the active act before designing. Use that act's Environment colors for roughly 90% of the asset or scene.
+2. Match the act's light source: sunlight (Act 1), reflected daylight (Act 2), god rays (Act 3), bioluminescence (Act 4), firelight (Act 5), then sparse dying embers (Act 6).
+3. For creatures, select one Creature color as the body identity, then use Environment colors for shading and material variation. Add a lighter creature color only for markings, eyes, horns, weak points, or elite traits.
+4. Build visual hierarchy with value: dark/muted base first, a supporting midtone second, and the lightest or most saturated act color only for focal detail.
+5. Shared gameplay accents are reserved for fixed meanings:
+   - #E1B957 Beacon Gold: interactable or objective
+   - #54A9A4 Arcane Teal: magic or rare reward
+   - #A6B94A Rot Lime: poison or corruption
+   - #D65045 Alarm Vermilion: immediate danger or critical state
+   - #A077B5 Relic Violet: elite or otherworldly element
+6. Do not use a gameplay accent as a common background or decorative filler. Act 4's environmental glows must stay duller than the shared Teal and Lime accents.
+7. Use #202020, #353535, and #000000 as shared deep neutrals where needed. Use #FFF4D2 or #D6CDA1 for light UI text on dark surfaces.
+8. Ability groups are global: Green, Black, White, Red, and Blue use the same identity in every act. Do not recolor a spell to match its environment.
+9. For every spell and ability VFX, use at least two values from its group: a dark core or outline plus a bright glow, edge, particle, or impact flash. Never use a middle value alone.
+10. In Acts 1–3, emphasize the dark core or outline against bright scenery. In Acts 4–6, emphasize the glow or flash against dark scenery. Keep the ability hue consistent.
+11. Test Green against grass and cave plants, Blue against haze, Red against fire, and Black against the deepest dark. Verify readability in grayscale and at a quick glance.
+12. Do not introduce new colors unless specifically requested. Do not communicate gameplay state with hue alone; also vary value, shape, icon, or motion.
+13. Before delivery, check the work in grayscale: the player, objective, hazard, and important interaction must still be readable.
+14. Return the exact hex codes used and state the act, creature colors, ability group, and any shared accents used.</textarea>
+      <button id="copyBrief" type="button">Copy agent brief</button>
+    </section>
+
+    <h2>Game design guide</h2>
+    <section class="guide">
+      <article class="guide-card">
+        <h3>1. Start with the act</h3>
+        <p>Choose the current act's six colors first. They define the lighting, materials, sky, terrain, clothing, and atmosphere for that part of the game.</p>
+      </article>
+      <article class="guide-card">
+        <h3>2. Build scenes in layers</h3>
+        <p>Use a dark or muted tone for most of the screen, a supporting midtone for forms and materials, then reserve the brightest or most saturated color for attention.</p>
+        <div class="rule" aria-label="60 percent base, 30 percent support, 10 percent focal color"><span style="background:#353535"></span><span style="background:#65769A"></span><span style="background:#E1B957"></span></div>
+        <div class="rule-labels"><span>60% base</span><span>30% support</span><span>10% focal</span></div>
+      </article>
+      <article class="guide-card">
+        <h3>3. Reserve accents for meaning</h3>
+        <ul>
+          <li><strong>Gold:</strong> interactable or objective</li>
+          <li><strong>Teal:</strong> magic or rare reward</li>
+          <li><strong>Lime:</strong> poison or corruption</li>
+          <li><strong>Vermilion:</strong> immediate danger</li>
+          <li><strong>Violet:</strong> elite or otherworldly</li>
+        </ul>
+      </article>
+      <article class="guide-card">
+        <h3>4. Make gameplay readable</h3>
+        <p>Never use a gameplay accent as a common background color. Give the player, enemy attacks, interactables, and hazards a distinct value as well as a distinct hue.</p>
+      </article>
+      <article class="guide-card">
+        <h3>5. UI and text</h3>
+        <p>Use Morning Cream or Aged Bone for important light text on Crystalline Void, Stone Dark, or True Pitch. Use color to reinforce icons and labels—not as the only way to communicate state.</p>
+      </article>
+      <article class="guide-card">
+        <h3>6. Check every scene</h3>
+        <ul>
+          <li>View it in grayscale: does the player still read first?</li>
+          <li>At a glance, can you spot the next objective?</li>
+          <li>Are accent colors used only where they carry meaning?</li>
+          <li>Does the scene still feel like its assigned act?</li>
+        </ul>
+      </article>
+    </section>
+
+  </main>
+
+  <script>
+    const accents = [
+      ['Beacon Gold — Interact / Objective', '#E1B957'],
+      ['Arcane Teal — Magic / Rare', '#54A9A4'],
+      ['Rot Lime — Corruption / Poison', '#A6B94A'],
+      ['Alarm Vermilion — Danger / Critical', '#D65045'],
+      ['Relic Violet — Elite / Otherworldly', '#A077B5']
+    ];
+    const abilityGroups = [
+      ['Green Abilities', 'Growth, healing, thorns, venom, and living nature magic.', '#75A858', [
+        ['Thorn Shadow', '#294633'], ['Moss Core', '#4F7A46'], ['Verdant Pulse', '#75A858'],
+        ['Newleaf Glow', '#9DCB67'], ['Lime Spark', '#C7E77A'], ['Pollen Flash', '#EEF3B4']
+      ]],
+      ['Black Abilities', 'Void, curses, shadow, decay, and spectral magic.', '#585567', [
+        ['True Pitch', '#000000'], ['Obsidian', '#17181C'], ['Void Smoke', '#30313A'],
+        ['Dusklight', '#585567'], ['Spectral Ash', '#9C99AA'], ['Wraith Flash', '#D2CCE0']
+      ]],
+      ['White Abilities', 'Wards, cleansing, faith, frost, and radiant protection.', '#F5E8BA', [
+        ['Bone Shadow', '#8C856E'], ['Aged Bone', '#D6CDA1'], ['Candle Gold', '#E4D18F'],
+        ['Ivory Glow', '#F5E8BA'], ['Moon White', '#FFF8DC'], ['Silver Flash', '#D8E4E2']
+      ]],
+      ['Red Abilities', 'Fire, rage, blood, impact, and destructive force.', '#D65045', [
+        ['Clotted Wine', '#44252B'], ['Old Gores', '#5A2D2D'], ['Bloodied Crimson', '#7B3F3F'],
+        ['Wound Light', '#C06A62'], ['Ember Red', '#D65045'], ['Fire Flash', '#F0A35A']
+      ]],
+      ['Blue Abilities', 'Water, storm, arcane force, cold, and controlled energy.', '#5B8590', [
+        ['Storm Deep', '#233A4A'], ['Runic Blue', '#3D6474'], ['Distant Teal', '#5B8590'],
+        ['Sky Rune', '#7FA9B2'], ['Aqua Glow', '#A7D6D0'], ['Frost Flash', '#E0F1E7']
+      ]]
+    ];
+    const acts = [
+      ['Act 1 — Surface Haven', 'Warm sunlight, soft grass, and the last truly safe place.', [
+        ['Morning Cream', '#FFF4D2'], ['Sunlit Linen', '#F2E7C0'],
+        ['Hearth Gold', '#D9C88A'], ['Field Glow', '#C2C97A'],
+        ['Tarnished Meadow', '#A5B86A'], ['Faded Grove', '#719E82']
+      ], [
+        ['Forest Umber', '#5E4630'], ['Fox Copper', '#B96D3E'],
+        ['Cream Pelt', '#E8D9AD'], ['Plum Feather', '#6B5A82'],
+        ['Berry Mark', '#A65355'], ['Honey Eye', '#F3C865']
+      ], 'act-creature-samples/act-1-surface-haven.png'],
+      ['Act 2 — Canyon Descent', 'The sky narrows above weathered paths, cliff walls, and fallen ruins.', [
+        ['Aged Bone (Skull)', '#D6CDA1'], ['Rusted Bronze (Buckles)', '#B4A06F'],
+        ['Lichen Olive', '#7A704F'], ['Ash Oxide', '#8C8C8C'],
+        ['Moss Shadow', '#4F6246'], ['Hearthwood', '#9C7345']
+      ], [
+        ['Canyon Charcoal', '#3E4140'], ['Dust Blue', '#657986'],
+        ['Mauve Hide', '#7C6F7F'], ['Rust Carapace', '#A6603E'],
+        ['Pale Horn', '#D2C08C'], ['Amber Eye', '#E0C55E']
+      ], 'act-creature-samples/act-2-canyon-descent.png'],
+      ['Act 3 — Cave Threshold', 'The last surface light falls through the cave mouth in enormous god rays.', [
+        ['Cave Ray', '#D9E3D6'], ['Fog Blue', '#8CA2A5'],
+        ['Distant Teal', '#5B8590'], ['Worn Blue', '#65769A'],
+        ['Ancient Steel', '#6B6B6B'], ['Deep Slate', '#3D555E']
+      ], [
+        ['Cave Coal', '#3E3431'], ['Ochre Hide', '#A47B43'],
+        ['Silt Pelt', '#C7B98B'], ['Rust Crest', '#995E5A'],
+        ['Moss Shell', '#657449'], ['Ray Eye', '#E7E8D2']
+      ], 'act-creature-samples/act-3-cave-threshold.png'],
+      ['Act 4 — Living Depths', 'No sunlight remains: plants, spores, and cave creatures create the glow.', [
+        ['Plum Shadow', '#503C58'], ['Twilight Mauve', '#806B8D'],
+        ['Deep Cave Teal', '#326B69'], ['Glow Moss', '#6F9D73'],
+        ['Spore Light', '#B4C98A'], ['Lilac Haze', '#A892AA']
+      ], [
+        ['Deep Indigo', '#2F304D'], ['Fungal Violet', '#774A67'],
+        ['Cave Coral', '#B5676C'], ['Shell Ochre', '#B08B52'],
+        ['Pale Chitin', '#D4C9A3'], ['Spore Eye', '#E5D98A']
+      ], 'act-creature-samples/act-4-living-depths.png'],
+      ['Act 5 — Cinder Warrens', 'Torchlight and braziers reveal blood, soot, and dangerous old stone.', [
+        ['Clotted Wine', '#44252B'], ['Old Gores', '#5A2D2D'],
+        ['Bloodied Crimson', '#7B3F3F'], ['Gore-Mud', '#5F4D32'],
+        ['Torch Ember', '#C06A62'], ['Fire Flash', '#F0A35A']
+      ], [
+        ['Soot Black', '#151819'], ['Iron Blue', '#3E5361'],
+        ['Ash Hide', '#8D9390'], ['Bone Plate', '#C7C2AE'],
+        ['Bruised Hide', '#64475C'], ['Cold Eye', '#79A7A0']
+      ], 'act-creature-samples/act-5-cinder-warrens.png'],
+      ['Act 6 — Deepest Dark', 'Only dying embers remain; the abyss is almost total black.', [
+        ['True Pitch', '#000000'], ['Abyssal Blue-Black', '#111417'],
+        ['Crystalline Void', '#202020'], ['Stone Dark', '#353535'],
+        ['Dying Coal', '#542B2E'], ['Dying Ember', '#6E473F']
+      ], [
+        ['Pitch Pelt', '#0A0A0B'], ['Abyss Blue', '#161D2B'],
+        ['Dead Steel', '#4A5561'], ['Grave Violet', '#5D5369'],
+        ['Pallid Bone', '#B6AE9B'], ['Ghost Eye', '#B9D7D0']
+      ], 'act-creature-samples/act-6-deepest-dark.png']
+    ];
+    function render(target, colours) {
+      document.getElementById(target).innerHTML = colours.map(([name, hex]) => `
+        <article class="swatch">
+          <div class="color" style="background:${hex}" aria-label="${name}: ${hex}"></div>
+          <div class="label"><span class="name">${name}</span><div class="hex-row"><code>${hex}</code><button class="copy-colour" type="button" data-hex="${hex}" aria-label="Copy ${hex}" title="Copy ${hex}">⧉</button></div></div>
+        </article>`).join('');
+    }
+    render('accents', accents);
+    const abilityTarget = document.getElementById('abilityGroups');
+    abilityGroups.forEach(([name, description, identity, colours]) => {
+      const group = document.createElement('article');
+      group.className = 'ability-group';
+      group.style.setProperty('--identity', identity);
+      const groupHexes = colours.map(([, hex]) => hex).join(', ');
+      group.innerHTML = '<div class="ability-heading"><i aria-hidden="true"></i><h3>' + name + '</h3></div><p>' + description + '</p><button class="copy-ability" type="button" data-hexes="' + groupHexes + '">Copy ability palette</button><div class="grid"></div>';
+      const groupGrid = group.querySelector('.grid');
+      colours.forEach(([colourName, hex]) => {
+        const item = document.createElement('article');
+        item.className = 'swatch';
+        item.innerHTML = '<div class="color" style="background:' + hex + '" aria-label="' + colourName + ': ' + hex + '"></div><div class="label"><span class="name">' + colourName + '</span><div class="hex-row"><code>' + hex + '</code><button class="copy-colour" type="button" data-hex="' + hex + '" aria-label="Copy ' + hex + '" title="Copy ' + hex + '">⧉</button></div></div>';
+        groupGrid.appendChild(item);
+      });
+      abilityTarget.appendChild(group);
+    });
+    const actsTarget = document.getElementById('acts');
+    acts.forEach(([title, description, environmentColours, creatureColours, samplePath]) => {
+      const act = document.createElement('article');
+      act.className = 'act';
+      const actHexes = [...environmentColours, ...creatureColours].map(([, hex]) => hex).join(', ');
+      act.innerHTML = '<h3>' + title + '</h3><p>' + description + '</p><img class="act-sample" src="' + samplePath + '" alt="' + title + ' reference image"><button class="copy-act" type="button" data-hexes="' + actHexes + '" aria-label="Copy act palette" title="Copy act palette">Act ⧉</button><h4 class="palette-label">Environment</h4><div class="act-colours environment-colours"></div><h4 class="palette-label">Creature colors</h4><div class="act-colours creature-colours"></div>';
+      function addActColours(target, colours) {
+        colours.forEach(([name, hex]) => {
+          const item = document.createElement('div');
+          item.className = 'act-colour';
+          item.innerHTML = '<div class="act-chip" style="background:' + hex + '"></div><span>' + name + '</span><div class="hex-row"><code>' + hex + '</code><button class="copy-colour" type="button" data-hex="' + hex + '" aria-label="Copy ' + hex + '" title="Copy ' + hex + '">⧉</button></div>';
+          target.appendChild(item);
+        });
+      }
+      addActColours(act.querySelector('.environment-colours'), environmentColours);
+      addActColours(act.querySelector('.creature-colours'), creatureColours);
+      actsTarget.appendChild(act);
+    });
+    async function copyText(value) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(value);
+        return;
+      }
+      const temporary = document.createElement('textarea');
+      temporary.value = value;
+      temporary.style.position = 'fixed';
+      temporary.style.opacity = '0';
+      document.body.appendChild(temporary);
+      temporary.select();
+      document.execCommand('copy');
+      temporary.remove();
+    }
+    function showCopied(button, original) {
+      button.textContent = 'Copied!';
+      setTimeout(() => button.textContent = original, 1600);
+    }
+    document.getElementById('copyButton').addEventListener('click', async () => {
+      await copyText(document.getElementById('hexCodes').value);
+      showCopied(document.getElementById('copyButton'), 'Copy hex codes');
+    });
+    document.getElementById('copyBrief').addEventListener('click', async () => {
+      await copyText(document.getElementById('agentBrief').value);
+      showCopied(document.getElementById('copyBrief'), 'Copy agent brief');
+    });
+    document.addEventListener('click', async event => {
+      const button = event.target.closest('.copy-colour');
+      if (!button) return;
+      await copyText(button.dataset.hex);
+      showCopied(button, '⧉');
+    });
+    document.addEventListener('click', async event => {
+      const button = event.target.closest('.copy-act');
+      if (!button) return;
+      await copyText(button.dataset.hexes);
+      showCopied(button, 'Act ⧉');
+    });
+    document.addEventListener('click', async event => {
+      const button = event.target.closest('.copy-ability');
+      if (!button) return;
+      await copyText(button.dataset.hexes);
+      showCopied(button, 'Copy ability palette');
+    });
+  </script>
+</body>
+</html>
