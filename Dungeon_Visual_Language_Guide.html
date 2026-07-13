@@ -122,7 +122,7 @@
     <p>A six-act journey from sunlit surface life into a firelit, hostile abyss.</p>
 
     <div class="copy-panel">
-      <textarea id="hexCodes" aria-label="All palette hex codes" readonly>#F2E7C0, #D9C88A, #A5B86A, #719E82, #5B8590, #65769A, #806B8D, #AD6E75, #8F5B55, #6E473F, #4A4A4A, #6B6B6B, #8C8C8C, #5A2D2D, #7B3F3F, #A15555, #202020, #353535, #000000, #D6CDA1, #B4A06F, #7A704F, #9A4B4B, #5F4D32, #FFF4D2, #9C7345, #C2C97A, #4F6246, #8CA2A5, #3D555E, #A892AA, #503C58, #C06A62, #44252B, #5A5A58, #111417, #D9E3D6, #326B69, #6F9D73, #B4C98A, #542B2E, #E1B957, #54A9A4, #A6B94A, #D65045, #A077B5, #294633, #4F7A46, #75A858, #9DCB67, #C7E77A, #EEF3B4, #17181C, #30313A, #585567, #9C99AA, #D2CCE0, #8C856E, #E4D18F, #F5E8BA, #FFF8DC, #D8E4E2, #F0A35A, #233A4A, #3D6474, #7FA9B2, #A7D6D0, #E0F1E7, #5E4630, #B96D3E, #E8D9AD, #6B5A82, #A65355, #F3C865, #3E4140, #657986, #7C6F7F, #A6603E, #D2C08C, #E0C55E, #3E3431, #A47B43, #C7B98B, #995E5A, #657449, #E7E8D2, #2F304D, #774A67, #B5676C, #B08B52, #D4C9A3, #E5D98A, #151819, #3E5361, #8D9390, #C7C2AE, #64475C, #79A7A0, #0A0A0B, #161D2B, #4A5561, #5D5369, #B6AE9B, #B9D7D0</textarea>
+      <textarea id="hexCodes" aria-label="All palette hex codes" readonly>#F2E7C0, #D9C88A, #A5B86A, #719E82, #5B8590, #65769A, #806B8D, #AD6E75, #8F5B55, #6E473F, #4A4A4A, #6B6B6B, #8C8C8C, #5A2D2D, #7B3F3F, #A15555, #202020, #353535, #000000, #D6CDA1, #B4A06F, #7A704F, #9A4B4B, #5F4D32, #FFF4D2, #9C7345, #C2C97A, #4F6246, #8CA2A5, #3D555E, #A892AA, #503C58, #C06A62, #44252B, #5A5A58, #111417, #D9E3D6, #326B69, #6F9D73, #B4C98A, #542B2E, #E1B957, #54A9A4, #A6B94A, #D65045, #A077B5, #294633, #4F7A46, #75A858, #9DCB67, #C7E77A, #EEF3B4, #17181C, #30313A, #585567, #9C99AA, #D2CCE0, #8C856E, #E4D18F, #F5E8BA, #FFF8DC, #D8E4E2, #F0A35A, #233A4A, #3D6474, #7FA9B2, #A7D6D0, #E0F1E7, #5E4630, #B96D3E, #E8D9AD, #6B5A82, #A65355, #F3C865, #3E4140, #657986, #7C6F7F, #A6603E, #D2C08C, #E0C55E, #3E3431, #A47B43, #C7B98B, #995E5A, #657449, #E7E8D2, #2F304D, #774A67, #B5676C, #B08B52, #D4C9A3, #E5D98A, #151819, #3E5361, #8D9390, #C7C2AE, #64475C, #79A7A0, #0A0A0B, #161D2B, #4A5561, #5D5369, #B6AE9B, #B9D7D0, #101827, #1B2638, #293B52, #7890AA</textarea>
       <button id="copyButton" type="button">Copy hex codes</button>
     </div>
 
@@ -137,6 +137,28 @@
 
     <h2>Shared gameplay accents</h2>
     <section class="grid" id="accents"></section>
+
+    <h2>UI palette</h2>
+    <section class="ability-group">
+      <div class="ability-heading" style="--identity:#7890AA"><i aria-hidden="true"></i><h3>Readable interface foundation</h3></div>
+      <p>Use the cool blue-black surfaces to separate menus from every act without fighting the world palette. Cream text keeps long-form reading warm; established gameplay accents retain their existing meanings.</p>
+      <button class="copy-ability" type="button" data-hexes="#101827, #1B2638, #293B52, #7890AA, #FFF4D2, #D8E4E2, #8D9390, #E1B957, #54A9A4, #9DCB67, #D65045">Copy UI palette</button>
+      <div class="grid" id="uiPalette"></div>
+    </section>
+    <section class="guide" aria-label="UI color usage guidance" style="margin-top:12px">
+      <article class="guide-card">
+        <h3>Layer the interface</h3>
+        <p>Use Dungeon Ink for the HUD shell, Deep Slate Blue for panels, and Raised Steel Blue for selected rows, tooltips, and elevated controls. Mist Border defines edges without becoming ornament.</p>
+      </article>
+      <article class="guide-card">
+        <h3>Keep text unmistakable</h3>
+        <p>Use Morning Cream for headings and primary text, Frosted Silver for body text, and Ash Disabled only for unavailable content. These text pairs meet WCAG AA contrast on the dark UI surfaces.</p>
+      </article>
+      <article class="guide-card">
+        <h3>Reserve color for state</h3>
+        <p>Gold marks focus or objectives, teal marks selection or magic, green confirms success, and vermilion signals danger. Keep status labels in a light neutral and reinforce every state with shape, icon, or motion.</p>
+      </article>
+    </section>
 
     <h2>Ability effect groups</h2>
     <section class="ability-groups" id="abilityGroups"></section>
@@ -180,7 +202,7 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
    - #D65045 Alarm Vermilion: immediate danger or critical state
    - #A077B5 Relic Violet: elite or otherworldly element
 6. Do not use a gameplay accent as a common background or decorative filler. Act 4's environmental glows must stay duller than the shared Teal and Lime accents.
-7. Use #202020, #353535, and #000000 as shared deep neutrals where needed. Use #FFF4D2 or #D6CDA1 for light UI text on dark surfaces.
+7. For UI, use #101827 for the shell, #1B2638 for panels, #293B52 for raised or selected surfaces, and #7890AA for borders. Use #FFF4D2 for primary text, #D8E4E2 for body text, and #8D9390 only for disabled text. Reserve #E1B957 for focus or objectives, #54A9A4 for selection or magic, #9DCB67 for success, and #D65045 for danger. Keep colored states out of long-form text and reinforce them with shape, icon, or motion.
 8. Ability groups are global: Green, Black, White, Red, and Blue use the same identity in every act. Do not recolor a spell to match its environment.
 9. For every spell and ability VFX, use at least two values from its group: a dark core or outline plus a bright glow, edge, particle, or impact flash. Never use a middle value alone.
 10. In Acts 1–3, emphasize the dark core or outline against bright scenery. In Acts 4–6, emphasize the glow or flash against dark scenery. Keep the ability hue consistent.
@@ -219,7 +241,7 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
       </article>
       <article class="guide-card">
         <h3>5. UI and text</h3>
-        <p>Use Morning Cream or Aged Bone for important light text on Crystalline Void, Stone Dark, or True Pitch. Use color to reinforce icons and labels—not as the only way to communicate state.</p>
+        <p>Build UI on Dungeon Ink, Deep Slate Blue, and Raised Steel Blue. Use Morning Cream for primary text and Frosted Silver for body text. Reserve gold, teal, green, and vermilion for meaningful states—never as decoration or the only state cue.</p>
       </article>
       <article class="guide-card">
         <h3>6. Check every scene</h3>
@@ -249,6 +271,19 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
       ['Rot Lime — Corruption / Poison', '#A6B94A'],
       ['Alarm Vermilion — Danger / Critical', '#D65045'],
       ['Relic Violet — Elite / Otherworldly', '#A077B5']
+    ];
+    const uiPalette = [
+      ['Dungeon Ink — HUD shell', '#101827'],
+      ['Deep Slate Blue — Panel', '#1B2638'],
+      ['Raised Steel Blue — Elevated', '#293B52'],
+      ['Mist Border — Divider', '#7890AA'],
+      ['Morning Cream — Primary text', '#FFF4D2'],
+      ['Frosted Silver — Body text', '#D8E4E2'],
+      ['Ash Disabled — Disabled text', '#8D9390'],
+      ['Beacon Gold — Focus / Objective', '#E1B957'],
+      ['Arcane Teal — Selected / Magic', '#54A9A4'],
+      ['Newleaf Glow — Success', '#9DCB67'],
+      ['Alarm Vermilion — Danger', '#D65045']
     ];
     const abilityGroups = [
       ['Green Abilities', 'Growth, healing, thorns, venom, and living nature magic.', '#75A858', [
@@ -281,7 +316,7 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
         ['Forest Umber', '#5E4630'], ['Fox Copper', '#B96D3E'],
         ['Cream Pelt', '#E8D9AD'], ['Plum Feather', '#6B5A82'],
         ['Berry Mark', '#A65355'], ['Honey Eye', '#F3C865']
-      ], ['act-creature-samples/act-1-surface-haven.png', 'act-creature-samples-v3/act-1-surface-haven.png', 'act-creature-samples-v5/Act1.png']],
+      ], ['act-creature-samples/act-1-surface-haven.png', 'act-creature-samples-v3/act-1-surface-haven.png']],
       ['Act 2 — Canyon Descent', 'The sky narrows above weathered paths, cliff walls, and fallen ruins.', [
         ['Aged Bone (Skull)', '#D6CDA1'], ['Rusted Bronze (Buckles)', '#B4A06F'],
         ['Lichen Olive', '#7A704F'], ['Ash Oxide', '#8C8C8C'],
@@ -290,7 +325,7 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
         ['Canyon Charcoal', '#3E4140'], ['Dust Blue', '#657986'],
         ['Mauve Hide', '#7C6F7F'], ['Rust Carapace', '#A6603E'],
         ['Pale Horn', '#D2C08C'], ['Amber Eye', '#E0C55E']
-      ], ['act-creature-samples/act-2-canyon-descent.png', 'act-creature-samples-v3/act-2-canyon-descent.png', 'act-creature-samples-v5/Act2.png']],
+      ], ['act-creature-samples/act-2-canyon-descent.png', 'act-creature-samples-v3/act-2-canyon-descent.png']],
       ['Act 3 — Cave Threshold', 'The last surface light falls through the cave mouth in enormous god rays.', [
         ['Cave Ray', '#D9E3D6'], ['Fog Blue', '#8CA2A5'],
         ['Distant Teal', '#5B8590'], ['Worn Blue', '#65769A'],
@@ -299,7 +334,7 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
         ['Cave Coal', '#3E3431'], ['Ochre Hide', '#A47B43'],
         ['Silt Pelt', '#C7B98B'], ['Rust Crest', '#995E5A'],
         ['Moss Shell', '#657449'], ['Ray Eye', '#E7E8D2']
-      ], ['act-creature-samples/act-3-cave-threshold.png', 'act-creature-samples-v3/act-3-cave-threshold.png', 'act-creature-samples-v5/Act3.png']],
+      ], ['act-creature-samples/act-3-cave-threshold.png', 'act-creature-samples-v3/act-3-cave-threshold.png']],
       ['Act 4 — Living Depths', 'No sunlight remains: plants, spores, and cave creatures create the glow.', [
         ['Plum Shadow', '#503C58'], ['Twilight Mauve', '#806B8D'],
         ['Deep Cave Teal', '#326B69'], ['Glow Moss', '#6F9D73'],
@@ -308,7 +343,7 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
         ['Deep Indigo', '#2F304D'], ['Fungal Violet', '#774A67'],
         ['Cave Coral', '#B5676C'], ['Shell Ochre', '#B08B52'],
         ['Pale Chitin', '#D4C9A3'], ['Spore Eye', '#E5D98A']
-      ], ['act-creature-samples/act-4-living-depths.png', 'act-creature-samples-v3/act-4-living-depths.png', 'act-creature-samples-v5/Act4.png']],
+      ], ['act-creature-samples/act-4-living-depths.png', 'act-creature-samples-v3/act-4-living-depths.png']],
       ['Act 5 — Cinder Warrens', 'Torchlight overtakes the last dying bioluminescence, revealing blood, soot, and dangerous old stone.', [
         ['Clotted Wine', '#44252B'], ['Old Gores', '#5A2D2D'],
         ['Bloodied Crimson', '#7B3F3F'], ['Gore-Mud', '#5F4D32'],
@@ -317,7 +352,7 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
         ['Soot Black', '#151819'], ['Iron Blue', '#3E5361'],
         ['Ash Hide', '#8D9390'], ['Bone Plate', '#C7C2AE'],
         ['Bruised Hide', '#64475C'], ['Cold Eye', '#79A7A0']
-      ], ['act-creature-samples/act-5-cinder-warrens.png', 'act-creature-samples-v3/act-5-cinder-warrens.png', 'act-creature-samples-v5/Act5.png']],
+      ], ['act-creature-samples/act-5-cinder-warrens.png', 'act-creature-samples-v3/act-5-cinder-warrens.png']],
       ['Act 6 — Deepest Dark', 'Only dying embers remain; the abyss is almost total black.', [
         ['True Pitch', '#000000'], ['Abyssal Blue-Black', '#111417'],
         ['Crystalline Void', '#202020'], ['Stone Dark', '#353535'],
@@ -326,7 +361,7 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
         ['Pitch Pelt', '#0A0A0B'], ['Abyss Blue', '#161D2B'],
         ['Dead Steel', '#4A5561'], ['Grave Violet', '#5D5369'],
         ['Pallid Bone', '#B6AE9B'], ['Ghost Eye', '#B9D7D0']
-      ], ['act-creature-samples/act-6-deepest-dark.png', 'act-creature-samples-v3/act-6-deepest-dark.png', 'act-creature-samples-v5/Act6.png']]
+      ], ['act-creature-samples/act-6-deepest-dark.png', 'act-creature-samples-v3/act-6-deepest-dark.png']]
     ];
     function render(target, colours) {
       document.getElementById(target).innerHTML = colours.map(([name, hex]) => `
@@ -336,6 +371,7 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
         </article>`).join('');
     }
     render('accents', accents);
+    render('uiPalette', uiPalette);
     const abilityTarget = document.getElementById('abilityGroups');
     abilityGroups.forEach(([name, description, identity, colours]) => {
       const group = document.createElement('article');
@@ -359,7 +395,7 @@ TRANSITION LOCK: Late Act 4 introduces dead amber fungi and soot-dark stone. Ear
       const actHexes = [...environmentColours, ...creatureColours].map(([, hex]) => hex).join(', ');
       const environmentHexes = environmentColours.map(([, hex]) => hex).join(', ');
       const creatureHexes = creatureColours.map(([, hex]) => hex).join(', ');
-      const sampleLabels = ['Creature samples', 'Creature samples V3', 'Creature samples V5'];
+      const sampleLabels = ['Creature samples', 'Creature samples V3'];
       const samplesMarkup = samplePaths.map((samplePath, index) => '<button class="act-sample-trigger" type="button" data-full-image="' + samplePath + '" data-caption="' + title + ' — ' + sampleLabels[index] + '" aria-label="Open full-size ' + sampleLabels[index] + ' for ' + title + '"><img class="act-sample" src="' + samplePath + '" alt="' + title + ' ' + sampleLabels[index] + '"><span class="act-sample-label">' + sampleLabels[index] + '</span></button>').join('');
       act.innerHTML = '<h3>' + title + '</h3><p>' + description + '</p><div class="act-samples">' + samplesMarkup + '</div><button class="copy-act" type="button" data-hexes="' + actHexes + '" aria-label="Copy act palette" title="Copy act palette">Act ⧉</button><h4 class="palette-label">Environment<button class="copy-section" type="button" data-hexes="' + environmentHexes + '" aria-label="Copy environment palette" title="Copy environment palette">⧉</button></h4><div class="act-colours environment-colours"></div><h4 class="palette-label">Creature colors<button class="copy-section" type="button" data-hexes="' + creatureHexes + '" aria-label="Copy creature palette" title="Copy creature palette">⧉</button></h4><div class="act-colours creature-colours"></div>';
       function addActColours(target, colours) {
