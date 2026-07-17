@@ -141,6 +141,21 @@ button, input { font: inherit; }
 .glossary-list dt { font-weight: bold; }.glossary-list dd { margin: 0; }
 .source-links { display: flex; flex-wrap: wrap; gap: .5rem; }
 .source-links a { padding: .35rem .5rem; border: 1px solid var(--border); background: var(--surface); font-size: .8rem; }
+.concept-page { max-width: none; }
+.concept-gallery { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
+.concept-card { scroll-margin-top: 4.5rem; border: 1px solid var(--border); background: var(--surface); }
+.concept-card figure { margin: 0; }
+.concept-image-link { display: block; overflow: hidden; border-bottom: 1px solid var(--border); background: #111417; }
+.concept-image-link img { display: block; width: 100%; height: auto; aspect-ratio: 1672 / 941; object-fit: cover; transition: transform .2s ease, opacity .2s ease; }
+.concept-image-link:hover img { transform: scale(1.005); opacity: .94; }
+.concept-card figcaption { padding: .85rem 1rem 1rem; }
+.concept-card figcaption > p:last-child { max-width: 66rem; margin: .6rem 0 0; color: var(--muted); font-size: .9rem; }
+.concept-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.concept-heading h2 { margin: 0; font: bold 1.45rem/1.2 Georgia, serif; }
+.concept-colors { display: flex; flex-wrap: wrap; gap: .4rem; }
+.concept-color { --chip: var(--border); display: inline-flex; align-items: center; gap: .35rem; padding: .18rem .45rem; border: 1px solid var(--border); background: var(--surface-alt); color: var(--ink); font-size: .72rem; font-weight: bold; }
+.concept-color::before { width: .7rem; height: .7rem; border: 1px solid color-mix(in srgb, var(--chip) 72%, #000); background: var(--chip); content: ""; }
+.color-black { --chip: #30313A; }.color-blue { --chip: #5B8590; }.color-green { --chip: #4F7A46; }.color-red { --chip: #7B3F3F; }.color-white { --chip: #D6CDA1; }
 .site-footer { max-width: 82rem; margin: 0 auto; padding: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .76rem; display: flex; justify-content: space-between; gap: 1rem; }
 
 @media (max-width: 900px) {
@@ -148,4 +163,4 @@ button, input { font: inherit; }
   .shell { display: block; }.sidebar { display: none; z-index: 9; width: 100%; height: auto; max-height: calc(100vh - 3.5rem); background: var(--page); border-right: 0; border-bottom: 1px solid var(--border); position: fixed; top: 3.5rem; left: 0; }.sidebar.is-open { display: block; }
   .content { padding: 1.25rem; }.principles { grid-template-columns: 1fr; }.school-heading, .section-heading { align-items: start; flex-direction: column; }.site-footer { display: block; }
 }
-@media (max-width: 520px) { .theme-label { display: none; }.glossary-list div { grid-template-columns: 1fr; gap: .2rem; }.hero h1, .spell-page-hero h1 { font-size: 1.8rem; } }
+@media (max-width: 520px) { .theme-label { display: none; }.glossary-list div { grid-template-columns: 1fr; gap: .2rem; }.hero h1, .spell-page-hero h1 { font-size: 1.8rem; }.concept-heading { align-items: flex-start; flex-direction: column; gap: .55rem; } }
