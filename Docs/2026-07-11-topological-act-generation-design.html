@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Topological Generation of the Acts — Design Doc</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; padding: 48px 20px 96px;
+      background: #171717; color: #e9e5db;
+      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 960px; margin: auto; }
+    h1 { margin: 0 0 6px; font-size: clamp(1.9rem, 4.5vw, 3rem); line-height: 1.1; }
+    .sub { margin: 0 0 22px; color: #bcb8af; font-size: 1.05rem; }
+    h2 {
+      margin: 46px 0 14px; padding-top: 14px; border-top: 1px solid #2f2f2f;
+      font-size: 1.05rem; letter-spacing: .08em; text-transform: uppercase; color: #d6cda1;
+    }
+    h3 { margin: 26px 0 8px; font-size: 1.18rem; color: #f2eee4; }
+    p { margin: 0 0 14px; color: #d4d0c6; }
+    strong { color: #f4efe2; }
+    em { color: #e7d9b0; font-style: italic; }
+    a { color: #d6cda1; }
+    code {
+      padding: 1px 6px; border-radius: 5px; background: #262626; border: 1px solid #383838;
+      font: .88em ui-monospace, Consolas, monospace; color: #e4d9b6;
+    }
+    .status {
+      display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 0 0 30px; padding: 14px 18px;
+      border: 1px solid #414141; border-left: 4px solid #d6cda1; border-radius: 10px; background: #202020;
+      font-size: .9rem; color: #bcb8af;
+    }
+    .status b { color: #e9e5db; font-weight: 650; }
+    .panel {
+      padding: 18px 20px; margin: 18px 0; border: 1px solid #414141; border-radius: 12px; background: #1d1d1d;
+    }
+    .lead { padding: 16px 20px; border: 1px solid #4c4632; border-radius: 12px; background: #211f16; }
+    .lead p:last-child { margin-bottom: 0; }
+    ul, ol { margin: 0 0 14px; padding-left: 22px; }
+    li { margin: 6px 0; color: #d4d0c6; }
+    li strong { color: #f4efe2; }
+    .toc { columns: 2; column-gap: 30px; padding: 16px 20px 16px 40px; border: 1px solid #383838; border-radius: 12px; background: #1c1c1c; }
+    .toc li { margin: 4px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: .9rem; }
+    th, td { padding: 10px 11px; text-align: left; border-bottom: 1px solid #333; vertical-align: top; }
+    th { color: #d6cda1; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; }
+    tbody tr:hover { background: #1f1f1f; }
+    .act-cell { white-space: nowrap; font-weight: 650; color: #f2eee4; }
+    .dot { display: inline-block; width: 11px; height: 11px; margin-right: 7px; border-radius: 50%; vertical-align: baseline; box-shadow: 0 0 8px currentColor; }
+    .ramp { font-family: ui-monospace, Consolas, monospace; color: #e4d9b6; letter-spacing: .04em; }
+    figure { margin: 20px 0; }
+    figure svg { display: block; width: 100%; height: auto; border: 1px solid #383838; border-radius: 12px; background: #141414; }
+    figcaption { margin-top: 8px; color: #9c988f; font-size: .82rem; text-align: center; }
+    .callout { margin: 16px 0; padding: 14px 18px; border-radius: 10px; border-left: 4px solid; }
+    .key { border-color: #d6cda1; background: #201d13; }
+    .warn { border-color: #A6603E; background: #211712; }
+    .callout p { margin: 0; }
+    .callout .tag { display: block; margin-bottom: 5px; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
+    .key .tag { color: #e4d18f; }
+    .warn .tag { color: #d99a6c; }
+    .pill { display: inline-block; padding: 2px 9px; border-radius: 999px; background: #2a2a2a; border: 1px solid #3d3d3d; font-size: .78rem; color: #cfcabb; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .two > .panel { margin: 0; }
+    .footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid #2f2f2f; color: #7f7c74; font-size: .82rem; }
+    @media (max-width: 680px) { .toc, .two { columns: 1; grid-template-columns: 1fr; } table { font-size: .82rem; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Topological Generation of the Acts</h1>
+  <p class="sub">How one procedural system produces every act's spatial form — open field → canyon → holed cave → deep cave — and the routing, gating and commitment logic underneath it.</p>
+
+  <div class="status">
+    <span><b>Status:</b> 🟡 Early Concept</span>
+    <span><b>Confidence:</b> ★★★☆☆</span>
+    <span><b>Roadmap phase:</b> 3 (post-MVP)</span>
+    <span><b>Scope:</b> Environment / level topology</span>
+    <span><b>Date:</b> 2026-07-11</span>
+  </div>
+
+  <div class="lead">
+    <p><strong>What this document is.</strong> A conceptual design for the <em>topology</em> layer of procedural level generation — the spatial skeleton of an act and how the player moves and decides through it. It is written <em>ahead of any engine work</em> (Unity, when it comes) and deliberately stays at the level of model, rules and pipeline rather than implementation detail.</p>
+    <p><strong>Where it sits.</strong> Procedural generation is a Phase 3 system; the MVP uses handcrafted arenas + a hub and explicitly excludes it. This doc exists so the eventual build starts from a decided model instead of a blank page. The <em>art / dressing</em> layer (making a generated canyon <em>look</em> like the concept art) and the <em>dungeon map</em> system are each their own future spec and are only referenced here as dependencies.</p>
+  </div>
+
+  <h2>Contents</h2>
+  <ol class="toc">
+    <li><a href="#answer">The answer, up front</a></li>
+    <li><a href="#floor">Core principle: Floor ≠ Enclosure</a></li>
+    <li><a href="#knobs">Six acts are two knobs</a></li>
+    <li><a href="#character">Spatial character: pockets &amp; traversal</a></li>
+    <li><a href="#graphs">Two graphs: Mission over Space</a></li>
+    <li><a href="#routing">Routing &amp; commitment engine</a></li>
+    <li><a href="#gating">Gating: lock &amp; key</a></li>
+    <li><a href="#macro">Rewards early, routes at boundaries</a></li>
+    <li><a href="#pipeline">Generation pipeline</a></li>
+    <li><a href="#open">Open knobs &amp; deferred deps</a></li>
+    <li><a href="#glossary">Glossary</a></li>
+  </ol>
+
+  <h2 id="answer">1 · The answer, up front</h2>
+  <p>The founding question was: <em>can a single generator span wide-open surface areas, canyons, caves with ceiling holes, and deep enclosed caves — or is that six unrelated generators?</em></p>
+  <p><strong>One system does all of it</strong>, provided two things people usually tangle together are kept separate (§2), and provided the act's differences are expressed as <em>parameters</em> rather than as distinct algorithms (§3). Everything else in this doc — connectivity, routing, gating — is the logic layered on top of that spatial skeleton.</p>
+
+  <h2 id="floor">2 · Core principle: Floor ≠ Enclosure</h2>
+  <p>Do not generate "a canyon" or "a cave" as a monolithic shape. Generate in two passes:</p>
+  <ol>
+    <li><strong>Floor pass</strong> — the navigable play-space: a bounded footprint carrying the tactical features (chokepoints, ledges, cover, hazards, LOS blockers) and the connections to neighbouring spaces. This pass is <em>nearly identical for every act</em>. A fight floor is a fight floor.</li>
+    <li><strong>Enclosure pass</strong> — a <em>shell</em> wrapped around that floor: walls up the sides, ceiling overhead. This is where acts diverge, and it is almost the entire reason Act&nbsp;1 feels open and Act&nbsp;6 feels buried.</li>
+  </ol>
+  <div class="callout key">
+    <span class="tag">Why this matters</span>
+    <p>The split lines up exactly with the combat camera. Because the game is played on a <strong>pulled-back MMO / tactical camera</strong>, the environment has two different jobs: the <strong>floor is play-space</strong> (must stay readable) and the <strong>enclosure is backdrop</strong> (mostly seen, not walked — so it can carry all the painterly density of the concept art without ever having to stay combat-legible).</p>
+  </div>
+
+  <h2 id="knobs">3 · Six acts are two knobs, not six shapes</h2>
+  <p>Every act is a point in a 2-D space defined by <strong>lateral enclosure</strong> (how tall/closed the side walls are) and <strong>overhead enclosure</strong> (how much ceiling exists), plus a boundary treatment and a light source drawn from the Visual Language Guide.</p>
+
+  <table>
+    <thead>
+      <tr><th>Act</th><th>Floor footprint</th><th>Walls (lateral)</th><th>Ceiling (overhead)</th><th>Boundary feel</th><th>Light</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="act-cell"><span class="dot" style="color:#D9C88A"></span>1 Surface Haven</td><td>Wide plaza, gentle roll</td><td>None / low mounds</td><td><strong>Open sky (0%)</strong></td><td>Soft — trees, hills, water, fog</td><td>Sun</td></tr>
+      <tr><td class="act-cell"><span class="dot" style="color:#D6CDA1"></span>2 Canyon Descent</td><td>Slot widening to pockets, descending grade</td><td><strong>Tall cliffs</strong>, hard</td><td>Open sky (narrow strip)</td><td>Hard rock</td><td>Reflected day</td></tr>
+      <tr><td class="act-cell"><span class="dot" style="color:#8CA2A5"></span>3 Cave Threshold</td><td>Chamber</td><td>Tall cave walls</td><td><strong>Partial — punched skylights → god rays</strong></td><td>Membrane (rock closing in)</td><td>God rays</td></tr>
+      <tr><td class="act-cell"><span class="dot" style="color:#806B8D"></span>4 Living Depths</td><td>Chamber + tunnels</td><td>Cave walls</td><td><strong>Full (100%)</strong></td><td>Enclosed</td><td>Bioluminescence</td></tr>
+      <tr><td class="act-cell"><span class="dot" style="color:#C06A62"></span>5 Cinder Warrens</td><td>Tighter chambers + corridor</td><td>Cave / worked stone</td><td>Full</td><td>Enclosed</td><td>Firelight</td></tr>
+      <tr><td class="act-cell"><span class="dot" style="color:#6E473F"></span>6 Deepest Dark</td><td>Vast chamber + void tunnels</td><td>Cave walls</td><td>Full (or lost in black)</td><td>Enclosed</td><td>Embers only</td></tr>
+    </tbody>
+  </table>
+
+  <p>Read down the ceiling column: <span class="ramp">0% → open strip → punctured → 100%</span>. <strong>That single ramp is the entire surface-to-abyss descent.</strong> The alarming jump from "open meadow" to "deep cave" is really just ceiling coverage climbing from 0 to 100 and the boundary shifting soft → hard → membrane. The floor generator underneath barely changes.</p>
+
+  <h3>Three parts that are genuinely non-trivial</h3>
+  <ul>
+    <li><strong>Act 1's "open" still needs a boundary.</strong> Open ≠ unbounded — you cannot let players walk to infinity. It means the boundary is <em>disguised</em>: receding hills, a treeline, a river, a fog death-zone. "No walls" is really "soft walls you don't read as walls."</li>
+    <li><strong>Act 3's ceiling holes are a first-class generator feature</strong>, not decoration. The god-ray shafts are the whole identity of that act; the generator must punch real gaps in the ceiling shell where the light beams will land dramatically on the floor.</li>
+    <li><strong>Transition acts want an enclosure <em>gradient</em></strong> — a single space can ramp from open-mouth (entrance) to closed (deeper), which is how you honour the Visual Guide's Transition Lock and avoid a hard visual cut between acts.</li>
+  </ul>
+
+  <h2 id="character">4 · Spatial character: readable pockets, organic traversal</h2>
+  <p>Reference point: WoW's <em>Wailing Caverns</em> — the archetype for Act&nbsp;4 (Living Depths) and proof that a pulled-back MMO camera <em>can</em> carry vertical, mazy caves. The lesson from dissecting it:</p>
+  <div class="callout key">
+    <span class="tag">The Wailing Caverns rule</span>
+    <p>Its verticality and maze-ness live almost entirely in the <strong>traversal — the winding stuff you walk through between fights</strong>. The actual pulls and boss fights happen in <strong>readable pockets and grottos</strong>, widenings where the floor flattens and the encounter is legible. So: spend the verticality / overgrowth / maze budget on the <em>connective tissue</em>; keep <em>combat floors</em> near-single-plane and clear.</p>
+  </div>
+  <p><strong>What not to inherit:</strong> Wailing Caverns' signature is that <em>everyone gets lost</em> — which directly violates the Bible's "players should always understand their objective / readability above complexity." Borrow its grotto-and-tunnel rhythm, verticality and living overgrowth; do <em>not</em> borrow its disorienting loop-maze. Readable critical path + <em>optional</em> loops.</p>
+
+  <h2 id="graphs">5 · Two graphs: Mission over Space</h2>
+  <p>Never conflate "how it's connected" with "how you progress." The generator maintains two graphs:</p>
+  <div class="two">
+    <div class="panel">
+      <h3 style="margin-top:0">Mission graph</h3>
+      <p>The <em>intended progression</em>: entrance → fork → objective → gate → … → boss. Directional, gated, readable. A mostly-linear DAG with branches that rejoin. <strong>This is where "linear descent with pathing choices" lives.</strong></p>
+    </div>
+    <div class="panel">
+      <h3 style="margin-top:0">Space graph</h3>
+      <p>The <em>physical connectivity</em>: how chambers and tunnels actually wire together — including loops, shortcuts and dead-end spurs that are not part of the critical path. <strong>This is where the maze lives.</strong></p>
+    </div>
+  </div>
+  <p>The key move: <strong>the space graph can be as cyclic and mazy as Wailing Caverns while the mission graph stays a clean directed descent.</strong> The loops are physical, not logical — you get "this tunnel loops back to that gate I passed" without ever confusing which way is forward.</p>
+  <div class="callout key">
+    <span class="tag">Method — this has a name</span>
+    <p>What we want is <strong>cyclic dungeon generation</strong> (Joris Dormans / the <em>Unexplored</em> games). Standard generators grow a <em>tree</em> — which is why so many roguelikes feel like sterile branching corridors with loops bolted on. Cyclic generation uses the <strong>loop itself as the building block</strong>: a cycle with a "there" path and a "back / shortcut" path, usually with a lock on one side. Chain and nest those along the descent axis and shortcuts, "I've been here from the other side," and understood-before-found locks emerge naturally, while progression stays legible.</p>
+  </div>
+
+  <h2 id="routing">6 · Routing &amp; commitment engine</h2>
+  <p>This is the spine of the design and resolves the central tension: the party should move <em>freely</em> (good feel) yet their routing decisions should <em>stick</em> (meaningful choice).</p>
+
+  <h3>The tension</h3>
+  <p>Two decisions constrain the solution. Traversal is <strong>two-way</strong> (you can double back through the knot — needed so the party can scout options before committing). And regeneration is <strong>generous</strong>: health and mana refill quickly between fights, because waiting on regen is dead time and feels bad. Together these remove attrition as a commitment engine — if you're always topped up and can walk anywhere, you'd simply take everything and no routing decision would bite.</p>
+  <p><strong>So commitment must be structural, not resource-based.</strong></p>
+
+  <h3>The model: two-way pods, one-way branching descents</h3>
+  <ul>
+    <li><strong>Within a pod</strong> (a region of the act): fully two-way, free, scoutable cyclic maze — the Wailing Caverns knot, no attrition, deliberate as long as you like.</li>
+    <li><strong>Between pods:</strong> a <strong>one-way descent</strong> (the "ledge you jump down"). Once you drop, the pod above is sealed — not as punishment, but because <em>descending is the commitment</em>. You had full freedom to deliberate first; the drop is you calling it.</li>
+  </ul>
+
+  <figure>
+    <svg viewBox="0 0 900 300" role="img" aria-label="Two-way pods connected by one-way branching descents">
+      <defs>
+        <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#d6cda1"/></marker>
+        <marker id="arrow2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#A6603E"/></marker>
+      </defs>
+      <!-- Pod A -->
+      <rect x="40" y="30" width="200" height="90" rx="14" fill="#1f2320" stroke="#4f6246" stroke-width="1.5"/>
+      <text x="140" y="58" text-anchor="middle" fill="#cfe0cb" font-size="14" font-family="system-ui">Pod A · entrance</text>
+      <text x="140" y="80" text-anchor="middle" fill="#8ba48c" font-size="11" font-family="system-ui">two-way cyclic maze</text>
+      <path d="M96 96 a26 16 0 1 0 52 0 a26 16 0 1 0 -52 0" fill="none" stroke="#4f6246" stroke-width="1.4" stroke-dasharray="3 3"/>
+      <!-- branching descent -->
+      <path d="M180 120 L120 175" stroke="#A6603E" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+      <path d="M200 120 L470 175" stroke="#A6603E" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+      <text x="120" y="150" fill="#d99a6c" font-size="11" font-family="system-ui" transform="rotate(-38 120 150)">drop → elite</text>
+      <text x="330" y="140" fill="#d99a6c" font-size="11" font-family="system-ui" transform="rotate(11 330 140)">drop → trader</text>
+      <!-- Pod B1 -->
+      <rect x="40" y="185" width="180" height="80" rx="14" fill="#231b13" stroke="#A6603E" stroke-width="1.5"/>
+      <text x="130" y="212" text-anchor="middle" fill="#e8c9a2" font-size="13" font-family="system-ui">Pod B · Elite</text>
+      <text x="130" y="232" text-anchor="middle" fill="#a98a6c" font-size="11" font-family="system-ui">risk / reward path</text>
+      <!-- Pod B2 -->
+      <rect x="400" y="185" width="180" height="80" rx="14" fill="#1a2126" stroke="#5b8590" stroke-width="1.5"/>
+      <text x="490" y="212" text-anchor="middle" fill="#bcd6de" font-size="13" font-family="system-ui">Pod B · Trader</text>
+      <text x="490" y="232" text-anchor="middle" fill="#7fa2ab" font-size="11" font-family="system-ui">economy path</text>
+      <!-- reconverge to next descent -->
+      <path d="M220 245 L360 245" stroke="#3a3a3a" stroke-width="1.4" stroke-dasharray="4 4" fill="none"/>
+      <text x="290" y="238" text-anchor="middle" fill="#6f6c64" font-size="10" font-family="system-ui">(paths reconverge deeper)</text>
+      <!-- Pod A internal two-way shortcut note -->
+      <path d="M60 60 L60 105" stroke="#4f6246" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+      <path d="M72 105 L72 60" stroke="#4f6246" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+      <text x="640" y="60" fill="#8ba48c" font-size="12" font-family="system-ui">↺ two-way shortcuts</text>
+      <text x="640" y="78" fill="#6f6c64" font-size="11" font-family="system-ui">scoped inside a pod</text>
+      <text x="640" y="205" fill="#d99a6c" font-size="12" font-family="system-ui">▼ one-way descent</text>
+      <text x="640" y="223" fill="#6f6c64" font-size="11" font-family="system-ui">the commitment gate</text>
+    </svg>
+    <figcaption>Free exploration within each pod; the descent between pods is the commitment — and its branch <em>is</em> the routing choice.</figcaption>
+  </figure>
+
+  <h3>The elegant collapse: the branching drop <em>is</em> the decision</h3>
+  <p>Slay-the-Spire's "elite or trader?" needs no lock — it can simply be <strong>which ledge you jump down.</strong> The pod above lets the party scout/preview both branches; they deliberate; they pick a ledge and commit. <strong>The commitment device and the decision are the same event</strong> — and "drop down a ledge to choose your path" is thematically perfect for a descent game. Slay the Spire's fork, made diegetic and vertical.</p>
+  <p>This also auto-scopes backtracking: you only ever re-walk the <em>current</em> pod, never the whole act — keeping the space legible and stopping content-hoovering.</p>
+
+  <h3>Two commitment tools, two scales</h3>
+  <ul>
+    <li><strong>Branching one-way descents</strong> → forward <em>routing</em> ("which way down — elite or trader?"). The everyday decision pulse.</li>
+    <li><strong>Key-gated exclusive doors</strong> (§7) → <em>optional in-pod</em> rewards ("one key up here — vault or shrine?"). The combinatorial "can't have both."</li>
+    <li><strong>Two-way shortcuts</strong> → survive, now scoped <em>inside</em> a pod (open a shortcut so you don't re-walk the maze / get back to a well fast).</li>
+  </ul>
+
+  <div class="callout warn">
+    <span class="tag">Two rules that fall out (generator responsibilities)</span>
+    <p><strong>1 · No blind drops.</strong> The one-way descent is placed <em>after</em> the party can scout/preview both branches, or the choice isn't informed. (This is where the deferred map system plugs in.)<br>
+    <strong>2 · The gate is abstract, skinned per act.</strong> The generator emits an abstract <em>commitment gate</em>; each act renders it — a slope into the canyon mouth (Act 1), a cliff ledge (Act 2), a waterfall or chasm (Acts 3–6), a collapsing span. "Ledge drop" is the cave-native skin, not the only one.</p>
+  </div>
+
+  <h2 id="gating">7 · Gating: lock &amp; key</h2>
+  <p>Alongside structural commitment (§6), <em>optional</em> content is gated by <strong>lock and key</strong>. The important property: irreversibility here is <strong>combinatorial, not temporal</strong> — the design says "you can't have <em>both</em>," never "you can't go back."</p>
+  <ul>
+    <li><strong>Fungible single-use keys.</strong> Any key fits any lock of its tier and is consumed on use — so the tension is purely about <em>where</em> to spend, never about holding the wrong colour. A few <strong>special keys</strong> may exist for special locks (a boss gate, a god-altar).</li>
+    <li><strong>The exclusive-door primitive.</strong> A cycle carrying one key and two mutually-exclusive locks. Two-way traversal lets the party scout both doors before committing the key; they claim exactly one.</li>
+  </ul>
+
+  <figure>
+    <svg viewBox="0 0 640 210" role="img" aria-label="Exclusive door primitive: one key, two locks on a scoutable loop">
+      <text x="320" y="30" text-anchor="middle" fill="#e4d18f" font-size="13" font-family="ui-monospace, monospace">⬥ key found here</text>
+      <path d="M300 40 C220 60 190 90 190 110" stroke="#5a5a58" stroke-width="1.6" fill="none"/>
+      <path d="M340 40 C420 60 450 90 450 110" stroke="#5a5a58" stroke-width="1.6" fill="none"/>
+      <rect x="130" y="108" width="120" height="40" rx="9" fill="#231b13" stroke="#A6603E" stroke-width="1.5"/>
+      <text x="190" y="133" text-anchor="middle" fill="#e8c9a2" font-size="13" font-family="system-ui">🔒 Door A</text>
+      <rect x="390" y="108" width="120" height="40" rx="9" fill="#1a2126" stroke="#5b8590" stroke-width="1.5"/>
+      <text x="450" y="133" text-anchor="middle" fill="#bcd6de" font-size="13" font-family="system-ui">🔒 Door B</text>
+      <text x="190" y="172" text-anchor="middle" fill="#a98a6c" font-size="11" font-family="system-ui">reward / route A</text>
+      <text x="450" y="172" text-anchor="middle" fill="#7fa2ab" font-size="11" font-family="system-ui">reward / route B</text>
+      <path d="M250 148 C300 185 340 185 390 148" stroke="#4f6246" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+      <text x="320" y="200" text-anchor="middle" fill="#8ba48c" font-size="11" font-family="system-ui">two-way loop — scout both, then commit one key</text>
+    </svg>
+    <figcaption>The exclusive-door primitive: a stampable building block that carries most of the "meaningful routing" pillar on its own.</figcaption>
+  </figure>
+
+  <div class="callout key">
+    <span class="tag">The one number that is the whole thing</span>
+    <p><strong>keys &lt; openable locks.</strong> If the party can open everything, there is no decision. The design target is scarcity — <em>"you'll find 3 keys this act, but there are 7 doors worth opening."</em> Every key spent is opportunity cost. That single ratio is the dial that makes routing matter.</p>
+  </div>
+
+  <h3>The generator's solvability contract</h3>
+  <ul>
+    <li><strong>Obligation:</strong> every <em>mandatory</em> lock on the descent spine must always have a key reachable <em>upstream</em> of it. The critical path can never soft-lock.</li>
+    <li><strong>Freedom:</strong> <em>optional</em> and <em>exclusive</em> locks are explicitly allowed to stay shut forever. That isn't a bug — spending your key on door A is <em>supposed</em> to leave B locked this run.</li>
+  </ul>
+
+  <h2 id="macro">8 · Rewards early, routes at boundaries — and the map falls out for free</h2>
+  <p>What sits behind an exclusive door is weighted by depth:</p>
+  <ul>
+    <li><strong>Rewards, weighted early</strong> — door A = a Relic, door B = an item cache / gold / a Well. Cheap to author, frequent small decisions, feeds build divergence.</li>
+    <li><strong>Routes, weighted at act boundaries</strong> — door A and door B are <em>different paths through / into the next act</em>: different encounters, sub-biome, difficulty, length. Bigger, replayable divergence, without asking the generator to build two full alternate acts every time.</li>
+  </ul>
+  <div class="callout key">
+    <span class="tag">Unifying insight</span>
+    <p><strong>Act-boundary route-doors <em>are</em> the run map.</strong> You don't need a separate abstract map screen (Slay the Spire nodes, FTL beacons) — you choose your macro path by walking through a door. This <strong>diegetic branching</strong> keeps the player in the world and lets the same lock-and-key vocabulary carry both the micro decisions (reward-doors inside an act) and the macro decisions (route-doors between acts). One system, two scales.</p>
+  </div>
+  <p><strong>Dependency — the dungeon map (deferred to its own spec).</strong> A progressively-revealed dungeon map is what makes both the micro and macro choices <em>informed</em>. Architecturally it costs almost nothing: <strong>the map is just a filtered, progressively-unfogged render of the space graph this doc already produces.</strong> No new data structure. The reveal-trigger design (fog baseline vs placed vantage/threshold reveals) and reveal-depth (topology + node types, contents hidden) belong in that separate document; noted here only so the generator remembers to emit map-ready graph data and to place reveals upstream of decisions.</p>
+
+  <h2 id="pipeline">9 · Generation pipeline</h2>
+  <p>The order the system runs. Each stage consumes the previous stage's output; the last two stages are the two passes from §2.</p>
+  <ol>
+    <li><strong>Mission graph</strong> — lay down the linear-ish gated descent with its fork choices.</li>
+    <li><strong>Cyclic space graph</strong> — realise the mission graph physically using cyclic generation: pods, loops, shortcuts, spurs.</li>
+    <li><strong>Commitment &amp; lock/key placement</strong> — place one-way descents (with their branch = routing choice) and lock/key pairs; run the solvability check.</li>
+    <li><strong>Node typing</strong> — assign each pocket a type: combat, elite, trader, treasure, shrine/altar, event, rest, boss. <em>Decision-bearing</em> — this is what the routing choices route toward and what the map surfaces.</li>
+    <li><strong>Spatial embedding</strong> — turn the abstract graph into laid-out 3-D volumes (pockets + connecting traversal), respecting the 2.5-D constraint (single navigable floor layer; verticality lives in traversal).</li>
+    <li><strong>Floor pass</strong> — generate each pocket's readable play-space and tactical features.</li>
+    <li><strong>Enclosure pass</strong> — wrap the act-specific shell (walls + ceiling) per the §3 knobs; punch Act-3 skylights; apply enclosure gradients at transitions.</li>
+    <li><strong>Dressing pass</strong> — <em>(separate art spec)</em> place set-pieces, props, vegetation, palette and lighting so it reads as the concept art.</li>
+  </ol>
+
+  <h2 id="open">10 · Open knobs &amp; deferred dependencies</h2>
+  <div class="two">
+    <div class="panel">
+      <h3 style="margin-top:0">Open tuning knobs</h3>
+      <ul>
+        <li><strong>Key economy</strong> — the keys-to-locks ratio per act.</li>
+        <li><strong>Loop / shortcut density</strong> — subtle vs heavy Wailing-Caverns knot.</li>
+        <li><strong>Reward-vs-route weighting curve</strong> across the act depth.</li>
+        <li><strong>Pod size &amp; count</strong> per act; descent cadence.</li>
+        <li><strong>How far spatial embedding goes</strong> (grammar-driven vs hand-tuned).</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3 style="margin-top:0">Deferred to their own specs</h3>
+      <ul>
+        <li><strong>The dungeon map</strong> — reveal triggers &amp; depth.</li>
+        <li><strong>Art / dressing layer</strong> — hitting the concept-art look.</li>
+        <li><strong>Acts-vs-Gods axis</strong> — do the 6 descent acts and the 5 God/Colour biomes nest, or is one the biome driver? Affects how many enclosure/kit templates the system needs.</li>
+        <li><strong>Encounter population</strong> — enemy composition per typed node (Bible ch. 11–12).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="glossary">11 · Glossary</h2>
+  <ul>
+    <li><strong>Floor / Enclosure</strong> — the two generation passes: navigable play-space vs the wall+ceiling shell wrapped around it.</li>
+    <li><strong>Pod</strong> — a region of an act: a self-contained two-way cyclic maze the party explores freely.</li>
+    <li><strong>Commitment gate / descent</strong> — a one-way transition between pods; its branch is a routing choice. Abstract; skinned per act (ledge, waterfall, chasm, slope).</li>
+    <li><strong>Mission graph / Space graph</strong> — logical progression vs physical connectivity; the former directed &amp; readable, the latter cyclic &amp; mazy.</li>
+    <li><strong>Cyclic dungeon generation</strong> — generation method using loops (not trees) as the primitive.</li>
+    <li><strong>Exclusive-door primitive</strong> — one key + two mutually-exclusive locks on a scoutable loop.</li>
+    <li><strong>Combinatorial irreversibility</strong> — "you can't have both," as opposed to temporal "you can't go back."</li>
+    <li><strong>Diegetic branching</strong> — choosing the macro route by walking through a door rather than via an abstract map screen.</li>
+  </ul>
+
+  <div class="footer">
+    Dream Dungeon — Topological Generation of the Acts · v0.1 · 2026-07-11 · Phase 3 (post-MVP) design study. Companion to the Design Bible (ch. 14 Level Design) and the Dungeon Visual Language Guide.
+  </div>
+</main>
+</body>
+</html>
