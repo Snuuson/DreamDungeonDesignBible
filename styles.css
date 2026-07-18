@@ -142,7 +142,7 @@ button, input { font: inherit; }
 .source-links { display: flex; flex-wrap: wrap; gap: .5rem; }
 .source-links a { padding: .35rem .5rem; border: 1px solid var(--border); background: var(--surface); font-size: .8rem; }
 .concept-page { max-width: none; }
-.concept-round-key { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .5rem; margin-top: 1rem; }
+.concept-round-key { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; margin-top: 1rem; }
 .concept-round-key > div { padding: .5rem .6rem; border: 1px solid var(--border); background: var(--surface); }
 .concept-round-key strong, .concept-round-key span { display: block; }
 .concept-round-key strong { font-size: .78rem; }
@@ -151,7 +151,7 @@ button, input { font: inherit; }
 .act-concept-heading { padding-bottom: .75rem; border-bottom: 1px solid var(--border); }
 .act-concept-heading h2 { margin: 0; font: bold 1.6rem/1.2 Georgia, serif; }
 .act-concept-heading > p:last-child { margin: .35rem 0 0; color: var(--muted); font-size: .86rem; }
-.act-concept-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+.act-concept-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
 .concept-preview { min-width: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; background: var(--page); }
 .concept-preview-new { border-color: color-mix(in srgb, var(--accent) 62%, var(--border)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent); }
 .concept-image-trigger { display: block; overflow: hidden; width: 100%; padding: 0; border: 0; border-bottom: 1px solid var(--border); background: #111417; color: #f8f9fa; text-align: left; cursor: zoom-in; }
