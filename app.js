@@ -11,13 +11,14 @@ function isDarkTheme() {
 }
 
 function updateThemeButton() {
+  if (!themeToggle) return;
   const dark = isDarkTheme();
   themeToggle.setAttribute('aria-pressed', String(dark));
   themeToggle.querySelector('.theme-label').textContent = dark ? 'Light' : 'Dark';
   themeToggle.querySelector('[aria-hidden="true"]').textContent = dark ? '☀' : '☾';
 }
 
-themeToggle.addEventListener('click', () => {
+themeToggle?.addEventListener('click', () => {
   const nextTheme = isDarkTheme() ? 'light' : 'dark';
   document.documentElement.dataset.theme = nextTheme;
   try { localStorage.setItem('dream-dungeon-theme', nextTheme); } catch { /* Theme still works for this visit. */ }
@@ -26,8 +27,9 @@ themeToggle.addEventListener('click', () => {
 
 updateThemeButton();
 
-document.getElementById('menu-toggle').addEventListener('click', (event) => {
+document.querySelector('.menu-toggle')?.addEventListener('click', (event) => {
   const sidebar = document.getElementById('sidebar');
+  if (!sidebar) return;
   sidebar.classList.toggle('is-open');
   event.currentTarget.setAttribute('aria-expanded', String(sidebar.classList.contains('is-open')));
 });
